@@ -1,8 +1,4 @@
-```
-    █▀█ █▀█ █▀▄▀█ █▀█ ▀█▀
-    █▀▀ █▀▄ █ ▀ █ █▀▀  █
-    ▀   ▀ ▀ ▀   ▀ ▀    ▀
-```
+![prmpt](assets/banner.webp)
 
 One command to set up any project for AI-first development with Claude Code.
 
