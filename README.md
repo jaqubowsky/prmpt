@@ -14,15 +14,14 @@ One command to set up any project for AI-first development with Claude Code.
 ## Quick start
 
 ```bash
-# Clone and run
+npx prmpt-cli
+```
+
+Or clone and run locally:
+```bash
 git clone https://github.com/jaqubowsky/prmpt.git
 cd your-project
 node /path/to/prmpt/bin/cli.mjs
-```
-
-Or if published to a GitHub org:
-```bash
-npx github:[org]/prmpt
 ```
 
 <p align="center">
@@ -33,7 +32,7 @@ npx github:[org]/prmpt
 
 ```mermaid
 graph LR
-    A[npx prmpt] --> B[Scaffold files]
+    A[npx prmpt-cli] --> B[Scaffold files]
     B --> C[Install plugins]
     C --> D[Launch Claude Code]
     D --> E[Explore codebase]
@@ -140,7 +139,7 @@ graph LR
 ## Updating
 
 ```bash
-npx github:[org]/prmpt update
+npx prmpt-cli update
 ```
 
 Updates skill and config files. Never overwrites your AGENTS.md or docs/ai/ without asking.
