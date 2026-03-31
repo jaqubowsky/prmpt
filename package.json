@@ -1,9 +1,9 @@
 {
   "name": "prmpt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "bin": {
-    "prmpt": "./bin/cli.mjs"
+    "prmpt": "bin/cli.mjs"
   },
   "files": [
     "bin/",
