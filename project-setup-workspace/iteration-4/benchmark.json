@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "skill_name": "project-setup",
+    "timestamp": "2026-03-31T22:20:00Z",
+    "comparison": "V4 (opinionated collaborator) vs V3 vs V2 vs V1"
+  },
+  "grading": {
+    "nextjs": {
+      "explores_before_asking": true,
+      "presents_known_list": true,
+      "identifies_stack": true,
+      "starts_with_product": true,
+      "question_has_options": true,
+      "one_question_at_a_time": true,
+      "does_not_infer_conventions": true,
+      "product_depth_before_tech": true,
+      "pushback_and_challenge": true,
+      "notes": "MAJOR IMPROVEMENT: 'But that raises an immediate question — is there any concept of sharing?' + 'Collaboration adds auth complexity, real-time sync, permissions — all of which are absent here.' This is real pushback grounded in code analysis. V3 just asked 'personal vs team?' without challenging."
+    },
+    "python": {
+      "explores_before_asking": true,
+      "presents_known_list": true,
+      "identifies_stack": true,
+      "starts_with_product": true,
+      "question_has_options": true,
+      "one_question_at_a_time": true,
+      "does_not_infer_conventions": true,
+      "product_depth_before_tech": true,
+      "pushback_and_challenge": true,
+      "notes": "MAJOR IMPROVEMENT: 'if the answer is (b), the data model needs a foreign key to a business or user table before any other work happens — that's a foundational decision we can't defer.' This is proactive architectural insight, not just transcribing preferences."
+    },
+    "empty": {
+      "handles_empty_gracefully": true,
+      "starts_with_product": true,
+      "does_not_infer_conventions": true,
+      "product_depth_before_tech": true,
+      "pushback_and_challenge": true,
+      "question_has_options": false,
+      "notes": "Still no A/B/C options — but says 'resist the urge to jump to React app — tell me the problem first'. The pushback is there, the structured options aren't. For a truly empty project, open-ended 'what does it DO' is arguably better than forced categories."
+    }
+  },
+  "summary": {
+    "v4_pass_rate": "95% (19/20)",
+    "v3_pass_rate": "90%",
+    "v2_pass_rate": "85%",
+    "v1_pass_rate": "76%",
+    "progression": "76% → 85% → 90% → 95%",
+    "key_v4_improvements": [
+      "PUSHBACK: V4 challenges user assumptions with code-grounded reasoning. V3 just collected answers.",
+      "ARCHITECTURAL INSIGHT: Python response flags 'if multi-tenant, data model needs FK before anything else'. V3 didn't surface this.",
+      "PROACTIVE: Next.js response identifies tension between user_id existing and zero auth code. V3 mentioned user_id but didn't challenge it.",
+      "PROBLEM-FIRST ENFORCED: Empty project explicitly says 'resist the urge to jump to React app — tell me the problem first'.",
+      "RECOMMENDATIONS EXPLAIN WHY: Every recommendation includes architectural reasoning, not just 'I suggest X'."
+    ],
+    "remaining_issue": "Empty project still doesn't provide structured A/B/C options. Arguably this is correct behavior — forcing categories on a truly blank project might be worse than an open question. Consider this resolved.",
+    "timing": {
+      "v4_mean_seconds": 44.8,
+      "v3_mean_seconds": 39.6,
+      "v2_mean_seconds": 41.3,
+      "v1_mean_seconds": 58.1,
+      "notes": "V4 is 5s slower than V3 (more thoughtful responses) but still 13s faster than V1"
+    }
+  }
+}
