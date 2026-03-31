@@ -1,6 +1,6 @@
 {
   "name": "prmpt-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "bin": {
     "prmpt-cli": "bin/cli.mjs",
@@ -15,7 +15,14 @@
   ],
   "license": "MIT",
   "description": "One command to set up any project for AI-first development with Claude Code",
-  "keywords": ["cli", "claude-code", "ai-workflow", "developer-tools", "superpowers", "project-setup"],
+  "keywords": [
+    "cli",
+    "claude-code",
+    "ai-workflow",
+    "developer-tools",
+    "superpowers",
+    "project-setup"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jaqubowsky/prmpt.git"
