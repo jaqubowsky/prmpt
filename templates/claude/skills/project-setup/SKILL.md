@@ -107,12 +107,40 @@ PRZYKLADY JAK PYTANIA MUSZA WYGLADAC:
 GALEZIE KTORE MUSZA BYC ROZWIAZANE
 (liczba pytan w kazdej galezi = dynamiczna):
 
+  [PRODUCT] Co ten projekt robi, dla kogo, jaki problem rozwiazuje
+  [ROADMAP] Co jest teraz priorytetem, co jest nastepne, co moze poczekac
   [STRUCTURE] Gdzie kod mieszka i dlaczego
   [DATA] Jak dane trafiaja do komponentow i co gdy cos failuje
   [COMPONENTS] Co Claude ma i nie ma generowac
   [TESTS] Co jest testowane, co nie jest i dlaczego
   [BOUNDARIES] Czego Claude nie moze ruszac bez pytania
   [WORKFLOW] Rozmiar PR, oczekiwania przy review
+
+WAZNE: Zacznij od [PRODUCT] i [ROADMAP] - bez zrozumienia
+CO budujemy, pytania o JAK nie maja sensu.
+
+PRZYKLADY PYTAN DLA NOWYCH GALEZI:
+
+  DOBRZE: "Opowiedz mi w 2-3 zdaniach co ten projekt robi
+    i kto z niego korzysta.
+
+    Na przyklad:
+    - Aplikacja do zarzadzania zadaniami dla malych zespolow
+    - API do przetwarzania platnosci dla e-commerce
+    - Dashboard analityczny dla zespolu marketingu
+
+    Nie potrzebuje formalnego opisu - wystarczy
+    wytlumaczenie jak koledzance."
+
+  DOBRZE: "Nad czym teraz pracujesz i co jest nastepne?
+
+    Na przyklad:
+    - Teraz: logowanie uzytkownikow, nastepne: dashboard
+    - Teraz: MVP - podstawowe CRUD, pozniej: integracje
+    - Nie mam jeszcze planu, zaczynam od zera
+
+    Proponuje: zapisac to co masz w glowie nawet
+    jesli to luźne - lepsze to niz nic."
 
 Galaz jest rozwiazana tylko gdy mozesz ja zapisac
 jednoznacznie w docs/ai/ bez zadnych domyslow.
@@ -129,6 +157,8 @@ Pokaz kazdy plik w calosci.
 Poczekaj na wyrazne potwierdzenie.
 Dopiero wtedy zapisz:
   - AGENTS.md (wszystkie placeholdery wypelnione)
+  - docs/ai/PRODUCT.md
+  - docs/ai/ROADMAP.md
   - docs/ai/CONVENTIONS.md
   - docs/ai/PATTERNS.md
   - docs/ai/TESTING.md

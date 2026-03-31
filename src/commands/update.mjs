@@ -15,6 +15,8 @@ const ALWAYS_UPDATE = [
 
 const NEVER_AUTO_UPDATE = [
   'AGENTS.md',
+  'docs/ai/PRODUCT.md',
+  'docs/ai/ROADMAP.md',
   'docs/ai/CONVENTIONS.md',
   'docs/ai/PATTERNS.md',
   'docs/ai/TESTING.md',

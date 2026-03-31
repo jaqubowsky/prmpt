@@ -26,6 +26,8 @@
 - Read the relevant docs/ai/ file
 
 ## References
+- Product context:           @docs/ai/PRODUCT.md
+- Roadmap & priorities:      @docs/ai/ROADMAP.md
 - Coding conventions:        @docs/ai/CONVENTIONS.md
 - Component patterns:        @docs/ai/PATTERNS.md
 - Testing strategy:          @docs/ai/TESTING.md

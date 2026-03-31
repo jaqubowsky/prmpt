@@ -8,6 +8,8 @@ const TEMPLATES_DIR = join(__dirname, '../../templates');
 const PATH_MAP = [
   { src: 'AGENTS.md', dest: 'AGENTS.md' },
   { src: 'SETUP_WITH_CLAUDE.md', dest: 'SETUP_WITH_CLAUDE.md' },
+  { src: 'docs/ai/PRODUCT.md', dest: 'docs/ai/PRODUCT.md' },
+  { src: 'docs/ai/ROADMAP.md', dest: 'docs/ai/ROADMAP.md' },
   { src: 'docs/ai/CONVENTIONS.md', dest: 'docs/ai/CONVENTIONS.md' },
   { src: 'docs/ai/PATTERNS.md', dest: 'docs/ai/PATTERNS.md' },
   { src: 'docs/ai/TESTING.md', dest: 'docs/ai/TESTING.md' },
