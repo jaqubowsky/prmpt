@@ -2,6 +2,13 @@
   <img src="assets/banner.webp" alt="prmpt" width="600" />
 </p>
 
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
+  <img src="https://img.shields.io/badge/node-%3E%3D18-green.svg" alt="Node >= 18" />
+  <img src="https://img.shields.io/badge/Claude_Code-required-purple.svg" alt="Claude Code required" />
+  <img src="https://img.shields.io/badge/LLM_API_calls-zero-orange.svg" alt="Zero LLM API calls" />
+</p>
+
 One command to set up any project for AI-first development with Claude Code.
 
 ```bash
