@@ -6,6 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const TEMPLATES_DIR = join(__dirname, '../../templates');
 
 const PATH_MAP = [
+  { src: 'CLAUDE.md', dest: 'CLAUDE.md' },
   { src: 'AGENTS.md', dest: 'AGENTS.md' },
   { src: 'SETUP_WITH_CLAUDE.md', dest: 'SETUP_WITH_CLAUDE.md' },
   { src: 'docs/ai/PRODUCT.md', dest: 'docs/ai/PRODUCT.md' },
