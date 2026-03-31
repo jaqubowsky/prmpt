@@ -11,7 +11,6 @@ const TEMPLATES_DIR = join(__dirname, '../../templates');
 
 const ALWAYS_UPDATE = [
   '.claude/skills/project-setup/SKILL.md',
-  '.claude/ai-workflow.json',
 ];
 
 const NEVER_AUTO_UPDATE = [
@@ -54,6 +53,9 @@ export async function updateCommand() {
   for (const { src, dest } of PATH_MAP) {
     const srcPath = join(TEMPLATES_DIR, src);
     const destPath = join(cwd, dest);
+
+    // ai-workflow.json is handled separately at the end
+    if (dest === '.claude/ai-workflow.json') continue;
 
     if (ALWAYS_UPDATE.includes(dest)) {
       await fse.ensureDir(dirname(destPath));

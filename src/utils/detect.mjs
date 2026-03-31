@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs';
-import { readJson } from 'fs-extra/esm';
+import fse from 'fs-extra';
 import { join } from 'node:path';
 
 export async function detectProject(cwd) {
@@ -13,7 +13,7 @@ export async function detectProject(cwd) {
 
   if (result.hasPackageJson) {
     try {
-      const pkg = await readJson(join(cwd, 'package.json'));
+      const pkg = await fse.readJson(join(cwd, 'package.json'));
       result.projectName = pkg.name || null;
     } catch {
       // malformed package.json - ignore

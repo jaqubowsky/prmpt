@@ -36,13 +36,13 @@ export async function initCommand() {
     console.log(chalk.yellow('Detected existing ai-workflow config.'));
     const choice = await ask('  [r] Reinitialize  [u] Update  [c] Cancel: ');
 
-    if (choice === 'c' || (!choice && choice !== 'r' && choice !== 'u')) {
-      console.log('Cancelled.');
-      process.exit(0);
-    }
     if (choice === 'u') {
       const { updateCommand } = await import('./update.mjs');
       return updateCommand();
+    }
+    if (choice !== 'r') {
+      console.log('Cancelled.');
+      process.exit(0);
     }
     // choice === 'r' → continue with init
   }
