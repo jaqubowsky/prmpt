@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "skill_name": "project-setup",
+    "timestamp": "2026-03-31T22:40:00Z",
+    "comparison": "V5 (final with LSP+context7+plugins) vs V4 (opinionated collaborator)"
+  },
+  "grading": {
+    "nextjs": {
+      "all_original_assertions": "8/8 pass",
+      "pushback": true,
+      "notes": "Excellent: 'No auth wiring visible — user_id exists but page fetches all tasks without auth/session filtering, which is either a placeholder or a gap.' + 'Tell me like you'd explain it to a friend over coffee'. Consistent with V4 quality."
+    },
+    "python": {
+      "all_original_assertions": "8/8 pass",
+      "pushback": true,
+      "notes": "Best Python response yet: 'the answer changes almost everything: multi-tenancy, auth, email delivery, PDF generation, and payment status all become mandatory in scenario (b) and irrelevant in (a).' Concrete consequences of each choice. Also noticed missing conftest.py."
+    },
+    "empty": {
+      "all_original_assertions": "5/6 pass",
+      "pushback": false,
+      "question_has_options": false,
+      "notes": "Still no structured A/B/C options. But quality is good: 'Explain it like you'd describe it to a friend over coffee — not what tech it uses, but what problem it solves.' Explicitly steers away from tech-first."
+    }
+  },
+  "summary": {
+    "v5_pass_rate": "95% (same as V4)",
+    "progression": "V1: 76% → V2: 85% → V3: 90% → V4: 95% → V5: 95%",
+    "v5_vs_v4": "No regression from plugin/LSP/context7 changes. Output quality stable. Skill changes (LSP map, context7 rule) don't affect interview behavior — they affect what gets written to AGENTS.md at the end.",
+    "timing": {
+      "nextjs": 42.1,
+      "python": 40.7,
+      "empty": 30.6,
+      "mean": 37.8,
+      "vs_v4_mean": 44.8,
+      "notes": "V5 is 7s faster than V4 on average"
+    },
+    "conclusion": "Skill is stable at 95%. The empty project 'no options' issue is the only persistent fail, and it's arguable whether forcing A/B/C categories on a truly blank project is better than an open question. The pushback, depth, and problem-first ordering are all working consistently."
+  }
+}
