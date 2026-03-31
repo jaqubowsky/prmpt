@@ -1,5 +1,12 @@
 {
-  "plugins": ["superpowers@claude-plugins-official"],
+  "plugins": [
+    "superpowers@claude-plugins-official",
+    "typescript-lsp@claude-plugins-official",
+    "github@claude-plugins-official",
+    "commit-commands@claude-plugins-official",
+    "figma@claude-plugins-official",
+    "claude-code-setup@claude-plugins-official"
+  ],
   "permissions": {
     "allow": [
       "Bash(npm run *)",

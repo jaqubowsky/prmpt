@@ -3,7 +3,7 @@ import { execa } from 'execa';
 import { createInterface } from 'node:readline';
 import { detectProject } from '../utils/detect.mjs';
 import { copyTemplates } from '../utils/copy-templates.mjs';
-import { installSuperpowers, isClaudeInstalled } from '../installers/superpowers.mjs';
+import { installPlugins, isClaudeInstalled } from '../installers/superpowers.mjs';
 
 async function ask(question) {
   const rl = createInterface({ input: process.stdin, output: process.stdout });
@@ -53,23 +53,27 @@ export async function initCommand() {
     projectName: project.projectName || 'my-project',
   });
 
-  // Step 5: Install Superpowers
-  const sp = await installSuperpowers();
-
-  // Step 6: Print summary
-  console.log();
   console.log(chalk.green('✓ Created files:'));
   for (const file of copied) {
     console.log(chalk.gray(`  · ${file}`));
   }
+
+  // Step 5: Install plugins
   console.log();
-  if (sp.success) {
-    console.log(chalk.green('✓ Superpowers installed'));
-  } else {
-    console.log(chalk.yellow('⚠ Superpowers: manual install needed'));
+  console.log(chalk.cyan('Installing plugins...'));
+  const results = await installPlugins();
+
+  const succeeded = results.filter(r => r.success);
+  const failed = results.filter(r => !r.success);
+
+  for (const r of succeeded) {
+    console.log(chalk.green(`  ✓ ${r.name}`));
+  }
+  for (const r of failed) {
+    console.log(chalk.yellow(`  ⚠ ${r.name} (manual install needed)`));
   }
 
-  // Step 7: Launch Claude Code
+  // Step 6: Launch Claude Code for project setup + plugin audit
   console.log();
   console.log(chalk.cyan('⚡ Launching Claude Code to finish setup...'));
   console.log();

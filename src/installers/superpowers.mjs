@@ -1,15 +1,36 @@
 import { execa } from 'execa';
 import chalk from 'chalk';
 
-export async function installSuperpowers() {
+const REQUIRED_PLUGINS = [
+  'superpowers',
+  'typescript-lsp',
+  'github',
+  'commit-commands',
+  'figma',
+  'claude-code-setup',
+];
+
+const MARKETPLACE = 'claude-plugins-official';
+
+async function installPlugin(name) {
+  const fullName = `${name}@${MARKETPLACE}`;
   try {
-    await execa('claude', ['plugin', 'install', 'superpowers@claude-plugins-official']);
-    return { success: true };
-  } catch (error) {
-    console.log(chalk.yellow('⚠ Could not install Superpowers automatically.'));
-    console.log(chalk.yellow('  Run manually: claude plugin install superpowers@claude-plugins-official'));
-    return { success: false };
+    await execa('claude', ['plugin', 'install', fullName]);
+    return { name, success: true };
+  } catch {
+    return { name, success: false };
   }
+}
+
+export async function installPlugins() {
+  const results = [];
+
+  for (const plugin of REQUIRED_PLUGINS) {
+    const result = await installPlugin(plugin);
+    results.push(result);
+  }
+
+  return results;
 }
 
 export async function isClaudeInstalled() {

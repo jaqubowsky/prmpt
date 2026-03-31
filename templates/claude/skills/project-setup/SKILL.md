@@ -120,6 +120,19 @@ Ask the user if they want CI and AI PR review. If yes:
 
 ## After writing
 
+### Verify toolchain
+
 Run the project's toolchain to verify: build, lint, test — whatever exists. If something fails, fix it. If no toolchain exists yet, skip and say so.
+
+### Plugin audit
+
+Check which plugins are installed (`claude plugin list`) and recommend project-specific plugins based on the stack discovered during the interview. For example:
+
+- Supabase project → suggest `supabase@claude-plugins-official`
+- Playwright tests → suggest `playwright@claude-plugins-official`
+- Frontend with design files → remind about `figma@claude-plugins-official` (already installed)
+- Complex codebase → suggest `context7@claude-plugins-official` for documentation lookups
+
+Install recommended plugins with user confirmation. Add them to `.claude/settings.json` plugins list.
 
 When done: "Done. Start every new feature with: /superpowers:brainstorm"
