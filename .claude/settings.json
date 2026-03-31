@@ -1,0 +1,30 @@
+{
+  "plugins": [
+    "superpowers@claude-plugins-official",
+    "context7@claude-plugins-official",
+    "github@claude-plugins-official",
+    "commit-commands@claude-plugins-official",
+    "figma@claude-plugins-official",
+    "claude-code-setup@claude-plugins-official"
+  ],
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npx vitest *)",
+      "Bash(npx jest *)",
+      "Bash(npx playwright *)",
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Write(.env*)",
+      "Write(package.json)"
+    ]
+  }
+}
