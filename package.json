@@ -1,0 +1,17 @@
+{
+  "name": "ai-workflow",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "ai-workflow": "./bin/cli.mjs"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "execa": "^9.5.2",
+    "fs-extra": "^11.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
