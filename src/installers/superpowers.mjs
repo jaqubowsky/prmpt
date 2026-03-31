@@ -6,7 +6,6 @@ const REQUIRED_PLUGINS = [
   'context7',
   'github',
   'commit-commands',
-  'figma',
   'claude-code-setup',
 ];
 

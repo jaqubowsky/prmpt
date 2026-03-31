@@ -4,6 +4,7 @@
     "context7@claude-plugins-official",
     "github@claude-plugins-official",
     "commit-commands@claude-plugins-official",
+    "figma@claude-plugins-official",
     "claude-code-setup@claude-plugins-official"
   ],
   "permissions": {

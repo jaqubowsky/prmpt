@@ -14,7 +14,7 @@ One command to set up any project for AI-first development with Claude Code.
 ## Quick start
 
 ```bash
-npx prmpt-cli
+npx prmpt
 ```
 
 Or clone and run locally:
@@ -32,7 +32,7 @@ node /path/to/prmpt/bin/cli.mjs
 
 ```mermaid
 graph LR
-    A[npx prmpt-cli] --> B[Scaffold files]
+    A[npx prmpt] --> B[Scaffold files]
     B --> C[Install plugins]
     C --> D[Launch Claude Code]
     D --> E[Explore codebase]
@@ -109,7 +109,7 @@ your-project/
 
 ## Plugins
 
-Six plugins installed automatically:
+Five plugins installed automatically:
 
 | Plugin | What it does |
 |---|---|
@@ -117,7 +117,6 @@ Six plugins installed automatically:
 | **context7** | Fresh docs for any library — even ones you know well |
 | **github** | Repo management, issues, PRs from Claude |
 | **commit-commands** | Git commit/push workflows |
-| **figma** | Access design files directly |
 | **claude-code-setup** | Codebase analysis and recommendations |
 
 After the interview, a **plugin audit** suggests stack-specific plugins (LSP for your language, Supabase, Playwright, etc.) and installs them.
@@ -139,7 +138,7 @@ graph LR
 ## Updating
 
 ```bash
-npx prmpt-cli update
+npx prmpt update
 ```
 
 Updates skill and config files. Never overwrites your AGENTS.md or docs/ai/ without asking.
