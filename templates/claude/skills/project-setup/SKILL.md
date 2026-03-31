@@ -13,7 +13,7 @@ Then present what you found (3-5 bullets) and say you'll ask questions one at a 
 
 ## How to interview
 
-Ask questions one at a time. For each question, provide concrete options and your recommended answer based on what you saw in the code.
+Ask exactly ONE question per message. Not two, not three — one. Even in Phase C/D when it feels like you could batch related questions (e.g., "tests + CSS + naming"), don't. Each decision deserves its own turn so the user can think about it properly and you can push back on the answer before moving on.
 
 If a question can be answered by exploring the codebase, explore the codebase instead of asking.
 
