@@ -25,7 +25,6 @@ export function printBanner() {
   console.log(pad(g.bold('\u2588\u2580\u2588 \u2588\u2580\u2588 \u2588\u2580\u2584\u2580\u2588 \u2588\u2580\u2588 \u2580\u2588\u2580'), 21));
   console.log(pad(b.bold('\u2588\u2580\u2580 \u2588\u2580\u2584 \u2588 \u2580 \u2588 \u2588\u2580\u2580  \u2588 '), 21));
   console.log(pad(chalk.dim('\u2580   \u2580 \u2580 \u2580   \u2580 \u2580    \u2580 '), 21));
-  console.log();
   const sub = `v${v}  \u00b7  Claude Code + Superpowers + TDD`;
   console.log(pad(chalk.dim(sub), sub.length));
   console.log();
