@@ -11,9 +11,16 @@ export function printBanner() {
   );
   const v = pkg.version;
 
-  console.log(chalk.cyan('╔══════════════════════════════════════╗'));
-  console.log(chalk.cyan(`║    ai-workflow · v${v.padEnd(19)}║`));
-  console.log(chalk.cyan('║  Claude Code + Superpowers + TDD     ║'));
-  console.log(chalk.cyan('╚══════════════════════════════════════╝'));
+  const logo = [
+    '    ▄▀█ █   █ █ █ █▀█ █▀█ █▄▀ █▀▀ █   █▀█ █ █ █',
+    '    █▀█ █   ▀▄▀▄▀ █▄█ █▀▄ █ █ █▀  █▄▄ █▄█ ▀▄▀▄▀',
+  ];
+
+  console.log();
+  for (const line of logo) {
+    console.log(chalk.bold.cyan(line));
+  }
+  console.log();
+  console.log(chalk.dim(`    v${v}  ·  Claude Code + Superpowers + TDD`));
   console.log();
 }
