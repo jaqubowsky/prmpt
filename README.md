@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.webp" alt="prmpt" width="600" />
+  <img src="https://raw.githubusercontent.com/jaqubowsky/prmpt/main/assets/banner.webp" alt="prmpt" width="600" />
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@ node /path/to/prmpt/bin/cli.mjs
 ```
 
 <p align="center">
-  <img src="assets/demo.gif" alt="prmpt demo" width="700" />
+  <img src="https://raw.githubusercontent.com/jaqubowsky/prmpt/main/assets/demo.gif" alt="prmpt demo" width="700" />
 </p>
 
 ## How it works

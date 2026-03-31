@@ -1,6 +1,6 @@
 {
   "name": "prmpt-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "bin": {
     "prmpt": "bin/cli.mjs"
@@ -9,7 +9,6 @@
     "bin/",
     "src/",
     "templates/",
-    "assets/",
     "README.md",
     "LICENSE"
   ],
