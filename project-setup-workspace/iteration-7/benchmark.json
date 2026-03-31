@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "skill_name": "project-setup",
+    "timestamp": "2026-04-01T00:30:00Z",
+    "test_focus": "PRODUCT.md output quality with user stories + acceptance criteria + success metrics"
+  },
+  "grading": {
+    "nextjs-task-manager": {
+      "has_user_stories": true,
+      "stories_have_acceptance_criteria": true,
+      "acceptance_criteria_testable": true,
+      "has_success_metrics": true,
+      "metrics_are_concrete": true,
+      "has_non_goals": true,
+      "has_user_flows": true,
+      "has_domain_concepts": true,
+      "caught_edge_cases": true,
+      "pushback_visible": true,
+      "notes": "6 user stories (US-1 through US-6) with Given/When/Then ACs. Caught schema mismatch (user_id vs no-auth). Flagged concurrent editing. Flagged completed field as open question. Success metrics are measurable (5 seconds, 60 seconds, 2 seconds)."
+    },
+    "empty-travel-map": {
+      "has_user_stories": true,
+      "stories_have_acceptance_criteria": true,
+      "acceptance_criteria_testable": true,
+      "has_success_metrics": true,
+      "metrics_are_concrete": true,
+      "has_non_goals": true,
+      "has_user_flows": true,
+      "has_domain_concepts": true,
+      "caught_edge_cases": true,
+      "pushback_visible": true,
+      "notes": "5 user stories with detailed ACs. Caught localStorage identity edge case. Flagged notes visibility as design decision needing confirmation. Named personas (Ana, Tomek). Success metrics in table format with concrete targets. WhatsApp preview as metric — smart."
+    }
+  },
+  "summary": {
+    "pass_rate": "100% (20/20 assertions)",
+    "key_wins": [
+      "User stories with Given/When/Then acceptance criteria — testable, concrete",
+      "Success metrics are measurable numbers, not vague",
+      "Edge cases caught and documented as known limitations",
+      "Design decisions flagged explicitly when ambiguous (notes visibility, completed field)",
+      "Named personas instead of abstract 'user'",
+      "Schema mismatches surfaced proactively"
+    ],
+    "comparison_to_original": "Original PRODUCT.md from manual test had no user stories, no ACs, no success metrics. This version is dramatically richer."
+  }
+}
