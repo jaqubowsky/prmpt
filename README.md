@@ -1,4 +1,6 @@
-![prmpt](assets/banner.webp)
+<p align="center">
+  <img src="assets/banner.webp" alt="prmpt" width="600" />
+</p>
 
 One command to set up any project for AI-first development with Claude Code.
 
