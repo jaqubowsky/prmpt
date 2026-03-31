@@ -11,11 +11,22 @@ export function printBanner() {
   );
   const v = pkg.version;
 
+  const cols = process.stdout.columns || 80;
+  const pad = (str, width) => {
+    const left = Math.max(0, Math.floor((cols - width) / 2));
+    return ' '.repeat(left) + str;
+  };
+
+  const g = chalk.hex('#00d4aa');
+  const b = chalk.hex('#0088ff');
+  const w = chalk.bold.white;
+
   console.log();
-  console.log(chalk.bold.cyan('    \u2588\u2580\u2588 \u2588\u2580\u2588 \u2588\u2580\u2584\u2580\u2588 \u2588\u2580\u2588 \u2580\u2588\u2580'));
-  console.log(chalk.bold.cyan('    \u2588\u2580\u2580 \u2588\u2580\u2584 \u2588 \u2580 \u2588 \u2588\u2580\u2580  \u2588 '));
-  console.log(chalk.bold.cyan('    \u2580   \u2580 \u2580 \u2580   \u2580 \u2580    \u2580 '));
+  console.log(pad(g.bold('\u2588\u2580\u2588 \u2588\u2580\u2588 \u2588\u2580\u2584\u2580\u2588 \u2588\u2580\u2588 \u2580\u2588\u2580'), 21));
+  console.log(pad(b.bold('\u2588\u2580\u2580 \u2588\u2580\u2584 \u2588 \u2580 \u2588 \u2588\u2580\u2580  \u2588 '), 21));
+  console.log(pad(chalk.dim('\u2580   \u2580 \u2580 \u2580   \u2580 \u2580    \u2580 '), 21));
   console.log();
-  console.log(chalk.dim(`    v${v}  \u00b7  Claude Code + Superpowers + TDD`));
+  const sub = `v${v}  \u00b7  Claude Code + Superpowers + TDD`;
+  console.log(pad(chalk.dim(sub), sub.length));
   console.log();
 }
