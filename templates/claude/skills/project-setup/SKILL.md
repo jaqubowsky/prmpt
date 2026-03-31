@@ -137,6 +137,8 @@ Check which plugins are installed (`claude plugin list`) and recommend project-s
 - C# → `csharp-lsp@claude-plugins-official`
 - Rust → `rust-analyzer-lsp@claude-plugins-official`
 - Java → `jdtls-lsp@claude-plugins-official`
+- PHP → `php-lsp@claude-plugins-official`
+- C/C++ → `clangd-lsp@claude-plugins-official`
 - Swift → `swift-lsp@claude-plugins-official`
 - Kotlin → `kotlin-lsp@claude-plugins-official`
 - Lua → `lua-lsp@claude-plugins-official`
