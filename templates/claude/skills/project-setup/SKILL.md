@@ -19,25 +19,42 @@ If a question can be answered by exploring the codebase, explore the codebase in
 
 **Do not infer decisions the user should make.** You can infer facts (what stack is used, what files exist). You cannot infer preferences (how to name files, what conventions to follow, what to test, how to structure components). When in doubt, ask.
 
-### What to ask about (not a fixed list — follow the conversation)
+### Interview order: problem first, tools last
 
-Start with the product — without understanding WHAT we're building, questions about HOW don't make sense.
+Understand the problem deeply before discussing any technology. The order matters:
 
-- **Product**: What this does, who it's for, what problem it solves
-- **Roadmap**: What's the priority now, what's next, what can wait
-- **Conventions**: File naming, variable naming, import ordering, code style preferences beyond the linter
-- **Patterns**: How a typical component/module/handler should be structured, what reusable patterns to follow
-- **Testing**: What to test, what not to test, how tests should be written, naming conventions for tests
-- **Architecture**: Why this stack, why this structure, key technical decisions
-- **Data flow**: How data gets to components, what happens on errors, loading/empty states
-- **Boundaries**: What Claude must not touch without asking
-- **Workflow**: PR size, branching, CI, review expectations
+**Phase A — The product (resolve fully before moving to Phase B)**
+- What does this do? Explain it like you'd tell a friend.
+- Who uses it? One person, a team, the public?
+- What problem does it solve? What's painful without it?
+- What are the key features? What does a user actually DO in the app?
+- What's the MVP vs. what comes later?
+- Any features that seem simple but have hidden complexity?
 
-Each answer either resolves a branch or opens new questions. Don't move on until a branch is fully resolved — meaning you could write it down unambiguously.
+Stay in Phase A until you could write a compelling 3-paragraph product description. "Web app for tracking countries" is not enough. WHO tracks countries, WHY, what do they see, what can they do, what makes this different from a spreadsheet?
 
-Go deep. "React + Vite + TypeScript" is not enough. Ask about: Do you want barrel exports or direct imports? Named exports or default? Where do types live — colocated or in a types folder? How do you name test files — `.test.ts` next to the file or in `__tests__/`? These details matter for every future Claude session.
+**Phase B — Roadmap & priorities**
+- What are you working on RIGHT NOW?
+- What's next after that?
+- What can wait? What's explicitly out of scope?
 
-For greenfield/empty projects with no code yet, options are especially important — there's nothing in the codebase to anchor the conversation. Always provide concrete options (e.g., "web app, API, CLI, library") with a recommendation when the project is blank.
+**Phase C — Technical decisions (only after A and B are fully resolved)**
+- Stack: what technology and why? (For greenfield: recommend based on what you learned in Phase A)
+- Architecture: how is the code organized?
+- Data: where does data live, how does it flow?
+- Testing: what gets tested, how?
+- Conventions: naming, file structure, imports, code style preferences
+- Patterns: how should a typical component/module look?
+
+**Phase D — Working rules**
+- Boundaries: what Claude must not touch without asking
+- Workflow: PR size, branching, CI, review expectations
+
+Each answer either resolves a branch or opens new questions. Don't move on to the next phase until the current one is fully resolved.
+
+Go deep within each phase. Ask follow-ups. "React + Vite" is not a resolved architecture — ask about barrel exports vs direct imports, where types live, how test files are named. These details matter for every future Claude session.
+
+For greenfield projects, always provide concrete options with a recommendation — there's no code to anchor the conversation.
 
 ## When all branches are resolved
 
