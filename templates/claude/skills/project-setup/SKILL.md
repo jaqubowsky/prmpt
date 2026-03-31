@@ -130,11 +130,24 @@ Run the project's toolchain to verify: build, lint, test — whatever exists. If
 
 Check which plugins are installed (`claude plugin list`) and recommend project-specific plugins based on the stack discovered during the interview. For example:
 
-- TypeScript/JavaScript → suggest `typescript-lsp@claude-plugins-official` (only language with a dedicated LSP plugin; other languages like Python, Go, Rust use Claude Code's built-in LSP support automatically)
-- Supabase → suggest `supabase@claude-plugins-official`
-- Playwright → suggest `playwright@claude-plugins-official`
+**LSP plugin for detected language (install the matching one):**
+- TypeScript/JavaScript → `typescript-lsp@claude-plugins-official`
+- Python → `pyright-lsp@claude-plugins-official`
+- Go → `gopls-lsp@claude-plugins-official`
+- C# → `csharp-lsp@claude-plugins-official`
+- Rust → `rust-analyzer-lsp@claude-plugins-official`
+- Java → `jdtls-lsp@claude-plugins-official`
+- Swift → `swift-lsp@claude-plugins-official`
+- Kotlin → `kotlin-lsp@claude-plugins-official`
+- Lua → `lua-lsp@claude-plugins-official`
+- Ruby → `ruby-lsp@claude-plugins-official`
+- Elixir → `elixir-ls-lsp@claude-plugins-official`
 
-Check `claude plugin list` for available plugins and recommend anything relevant to the detected stack.
+**Other project-specific plugins:**
+- Supabase → `supabase@claude-plugins-official`
+- Playwright → `playwright@claude-plugins-official`
+
+Check `claude plugin list` for any other relevant plugins.
 
 Install recommended plugins with user confirmation. Add them to `.claude/settings.json` plugins list.
 
