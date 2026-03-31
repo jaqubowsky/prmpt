@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import * as fs from 'fs-extra';
+import fse from 'fs-extra';
 import { createInterface } from 'node:readline';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -42,10 +42,10 @@ export async function updateCommand() {
     process.exit(1);
   }
 
-  const currentMeta = await fs.readJson(metaPath);
+  const currentMeta = await fse.readJson(metaPath);
   console.log(chalk.gray(`Current version: ${currentMeta.version}`));
 
-  const bundledMeta = await fs.readJson(join(TEMPLATES_DIR, 'ai-workflow.json'));
+  const bundledMeta = await fse.readJson(join(TEMPLATES_DIR, 'ai-workflow.json'));
   console.log(chalk.gray(`Bundled version: ${bundledMeta.version}`));
   console.log();
 
@@ -56,23 +56,23 @@ export async function updateCommand() {
     const destPath = join(cwd, dest);
 
     if (ALWAYS_UPDATE.includes(dest)) {
-      await fs.ensureDir(dirname(destPath));
-      await fs.copy(srcPath, destPath);
+      await fse.ensureDir(dirname(destPath));
+      await fse.copy(srcPath, destPath);
       console.log(chalk.green(`  ✓ ${dest} (auto-updated)`));
       updated++;
       continue;
     }
 
     if (!existsSync(destPath)) {
-      await fs.ensureDir(dirname(destPath));
-      await fs.copy(srcPath, destPath);
+      await fse.ensureDir(dirname(destPath));
+      await fse.copy(srcPath, destPath);
       console.log(chalk.green(`  ✓ ${dest} (new file)`));
       updated++;
       continue;
     }
 
-    const currentContent = await fs.readFile(destPath, 'utf-8');
-    const bundledContent = await fs.readFile(srcPath, 'utf-8');
+    const currentContent = await fse.readFile(destPath, 'utf-8');
+    const bundledContent = await fse.readFile(srcPath, 'utf-8');
 
     if (currentContent === bundledContent) {
       continue; // no changes
@@ -81,7 +81,7 @@ export async function updateCommand() {
     if (NEVER_AUTO_UPDATE.includes(dest)) {
       const answer = await ask(`  Update ${dest}? (y/n): `);
       if (answer === 'y') {
-        await fs.copy(srcPath, destPath);
+        await fse.copy(srcPath, destPath);
         console.log(chalk.green(`  ✓ ${dest}`));
         updated++;
       } else {
@@ -92,7 +92,7 @@ export async function updateCommand() {
 
     const answer = await ask(`  Update ${dest}? (y/n): `);
     if (answer === 'y') {
-      await fs.copy(srcPath, destPath);
+      await fse.copy(srcPath, destPath);
       console.log(chalk.green(`  ✓ ${dest}`));
       updated++;
     } else {
@@ -102,7 +102,7 @@ export async function updateCommand() {
 
   // Update metadata
   const now = new Date().toISOString();
-  await fs.writeJson(metaPath, { ...bundledMeta, installedAt: currentMeta.installedAt, updatedAt: now }, { spaces: 2 });
+  await fse.writeJson(metaPath, { ...bundledMeta, installedAt: currentMeta.installedAt, updatedAt: now }, { spaces: 2 });
 
   console.log();
   if (updated > 0) {

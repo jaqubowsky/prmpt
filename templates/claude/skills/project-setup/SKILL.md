@@ -1,4 +1,5 @@
 ---
+name: project-setup
 description: Initialize or update AGENTS.md and docs/ai/ by first exploring the codebase, then interviewing the user about decisions that cannot be inferred. Use when the user says "finish setup", "finish project setup", "set up project context", "update AGENTS.md", or when docs/ai/ contains placeholder comments.
 ---
 

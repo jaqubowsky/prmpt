@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import fse from 'fs-extra';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -24,26 +24,26 @@ export async function copyTemplates(cwd, { projectName }) {
     const srcPath = join(TEMPLATES_DIR, src);
     const destPath = join(cwd, dest);
 
-    await fs.ensureDir(dirname(destPath));
-    await fs.copy(srcPath, destPath);
+    await fse.ensureDir(dirname(destPath));
+    await fse.copy(srcPath, destPath);
     copied.push(dest);
   }
 
   // Inject project name into AGENTS.md
   if (projectName) {
     const agentsPath = join(cwd, 'AGENTS.md');
-    let content = await fs.readFile(agentsPath, 'utf-8');
+    let content = await fse.readFile(agentsPath, 'utf-8');
     content = content.replace('[PROJECT_NAME]', projectName);
-    await fs.writeFile(agentsPath, content);
+    await fse.writeFile(agentsPath, content);
   }
 
   // Inject timestamp into ai-workflow.json
   const jsonPath = join(cwd, '.claude/ai-workflow.json');
-  const meta = await fs.readJson(jsonPath);
+  const meta = await fse.readJson(jsonPath);
   const now = new Date().toISOString();
   meta.installedAt = now;
   meta.updatedAt = now;
-  await fs.writeJson(jsonPath, meta, { spaces: 2 });
+  await fse.writeJson(jsonPath, meta, { spaces: 2 });
 
   return copied;
 }
