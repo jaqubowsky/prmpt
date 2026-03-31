@@ -65,7 +65,7 @@ For existing projects: verify the stack from code, then dig into decisions.
 - Stack: what and why? Push back if the choice doesn't fit the problem.
 - Architecture: how is code organized? Why this way?
 - Data: where does it live, how does it flow, what happens on errors?
-- Testing: what gets tested, how, what's the philosophy? (Don't accept "no tests" without pushback if the project needs them.)
+- Testing: focus on CORE BUSINESS LOGIC — the things that break the app when they fail. Not wrappers, not fetch hooks, not conditional rendering. Ask: "What is the real business logic here that must never break?" Test THAT. Status transitions, permission checks, URL identity resolution, data validation — not Supabase query wrappers.
 - Conventions: naming, file structure, imports, code style — ask about SPECIFIC choices, not categories.
 - Patterns: show me what a well-written unit looks like in this codebase.
 
