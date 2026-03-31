@@ -130,7 +130,7 @@ Run the project's toolchain to verify: build, lint, test — whatever exists. If
 
 Check which plugins are installed (`claude plugin list`) and recommend project-specific plugins based on the stack discovered during the interview. For example:
 
-- TypeScript/JavaScript → suggest `typescript-lsp@claude-plugins-official`
+- TypeScript/JavaScript → suggest `typescript-lsp@claude-plugins-official` (only language with a dedicated LSP plugin; other languages like Python, Go, Rust use Claude Code's built-in LSP support automatically)
 - Supabase → suggest `supabase@claude-plugins-official`
 - Playwright → suggest `playwright@claude-plugins-official`
 
