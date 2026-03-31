@@ -1,9 +1,9 @@
 {
-  "name": "ai-workflow",
+  "name": "prmpt",
   "version": "1.0.0",
   "type": "module",
   "bin": {
-    "ai-workflow": "./bin/cli.mjs"
+    "prmpt": "./bin/cli.mjs"
   },
   "dependencies": {
     "chalk": "^5.4.1",

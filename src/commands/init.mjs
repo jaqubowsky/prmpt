@@ -24,7 +24,7 @@ export async function initCommand() {
     console.log(chalk.red('✗ Claude Code is required but not found.'));
     console.log();
     console.log('  Install it from: https://docs.anthropic.com/en/docs/claude-code');
-    console.log('  Then run ai-workflow again.');
+    console.log('  Then run prmpt again.');
     process.exit(1);
   }
 
@@ -33,7 +33,7 @@ export async function initCommand() {
 
   // Step 3: Already initialized?
   if (project.hasAgentsMd) {
-    console.log(chalk.yellow('Detected existing ai-workflow config.'));
+    console.log(chalk.yellow('Detected existing prmpt config.'));
     const choice = await ask('  [r] Reinitialize  [u] Update  [c] Cancel: ');
 
     if (choice === 'u') {

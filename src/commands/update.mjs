@@ -33,18 +33,18 @@ async function ask(question) {
 
 export async function updateCommand() {
   const cwd = process.cwd();
-  const metaPath = join(cwd, '.claude/ai-workflow.json');
+  const metaPath = join(cwd, '.claude/prmpt.json');
 
   if (!existsSync(metaPath)) {
-    console.log(chalk.red('✗ No ai-workflow installation found.'));
-    console.log('  Run ai-workflow init first.');
+    console.log(chalk.red('✗ No prmpt installation found.'));
+    console.log('  Run prmpt init first.');
     process.exit(1);
   }
 
   const currentMeta = await fse.readJson(metaPath);
   console.log(chalk.gray(`Current version: ${currentMeta.version}`));
 
-  const bundledMeta = await fse.readJson(join(TEMPLATES_DIR, 'ai-workflow.json'));
+  const bundledMeta = await fse.readJson(join(TEMPLATES_DIR, 'prmpt.json'));
   console.log(chalk.gray(`Bundled version: ${bundledMeta.version}`));
   console.log();
 
@@ -54,8 +54,8 @@ export async function updateCommand() {
     const srcPath = join(TEMPLATES_DIR, src);
     const destPath = join(cwd, dest);
 
-    // ai-workflow.json is handled separately at the end
-    if (dest === '.claude/ai-workflow.json') continue;
+    // prmpt.json is handled separately at the end
+    if (dest === '.claude/prmpt.json') continue;
 
     if (ALWAYS_UPDATE.includes(dest)) {
       await fse.ensureDir(dirname(destPath));

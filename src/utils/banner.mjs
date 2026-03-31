@@ -11,16 +11,11 @@ export function printBanner() {
   );
   const v = pkg.version;
 
-  const logo = [
-    '    ▄▀█ █   █ █ █ █▀█ █▀█ █▄▀ █▀▀ █   █▀█ █ █ █',
-    '    █▀█ █   ▀▄▀▄▀ █▄█ █▀▄ █ █ █▀  █▄▄ █▄█ ▀▄▀▄▀',
-  ];
-
   console.log();
-  for (const line of logo) {
-    console.log(chalk.bold.cyan(line));
-  }
+  console.log(chalk.bold.cyan('    \u2588\u2580\u2588 \u2588\u2580\u2588 \u2588\u2580\u2584\u2580\u2588 \u2588\u2580\u2588 \u2580\u2588\u2580'));
+  console.log(chalk.bold.cyan('    \u2588\u2580\u2580 \u2588\u2580\u2584 \u2588 \u2580 \u2588 \u2588\u2580\u2580  \u2588 '));
+  console.log(chalk.bold.cyan('    \u2580   \u2580 \u2580 \u2580   \u2580 \u2580    \u2580 '));
   console.log();
-  console.log(chalk.dim(`    v${v}  ·  Claude Code + Superpowers + TDD`));
+  console.log(chalk.dim(`    v${v}  \u00b7  Claude Code + Superpowers + TDD`));
   console.log();
 }

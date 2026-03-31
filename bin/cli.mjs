@@ -10,18 +10,18 @@ const program = new Command();
 printBanner();
 
 program
-  .name('ai-workflow')
+  .name('prmpt')
   .description('Scaffold AI-first development workflow')
   .version('1.0.0');
 
 program
   .command('init', { isDefault: true })
-  .description('Initialize ai-workflow in current project')
+  .description('Initialize prmpt in current project')
   .action(initCommand);
 
 program
   .command('update')
-  .description('Update ai-workflow templates to latest version')
+  .description('Update prmpt templates to latest version')
   .action(updateCommand);
 
 program.parse();

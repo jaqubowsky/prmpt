@@ -14,7 +14,7 @@ const PATH_MAP = [
   { src: 'docs/ai/ARCHITECTURE.md', dest: 'docs/ai/ARCHITECTURE.md' },
   { src: 'claude/settings.json', dest: '.claude/settings.json' },
   { src: 'claude/skills/project-setup/SKILL.md', dest: '.claude/skills/project-setup/SKILL.md' },
-  { src: 'ai-workflow.json', dest: '.claude/ai-workflow.json' },
+  { src: 'prmpt.json', dest: '.claude/prmpt.json' },
 ];
 
 export async function copyTemplates(cwd, { projectName }) {
@@ -37,8 +37,8 @@ export async function copyTemplates(cwd, { projectName }) {
     await fse.writeFile(agentsPath, content);
   }
 
-  // Inject timestamp into ai-workflow.json
-  const jsonPath = join(cwd, '.claude/ai-workflow.json');
+  // Inject timestamp into prmpt.json
+  const jsonPath = join(cwd, '.claude/prmpt.json');
   const meta = await fse.readJson(jsonPath);
   const now = new Date().toISOString();
   meta.installedAt = now;

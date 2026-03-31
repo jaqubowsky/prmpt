@@ -2,25 +2,26 @@
 
 ## What just happened
 
-ai-workflow created:
-  ✓ AGENTS.md skeleton
-  ✓ docs/ai/ with placeholder files
-  ✓ .claude/settings.json with Superpowers config
-  ✓ .claude/skills/project-setup/ - custom setup skill
-  ✓ Superpowers plugin installed
+prmpt created:
+✓ AGENTS.md skeleton
+✓ docs/ai/ with placeholder files
+✓ .claude/settings.json with Superpowers config
+✓ .claude/skills/project-setup/ - custom setup skill
+✓ Superpowers plugin installed
 
 ## If Claude Code didn't launch automatically
 
 Open Claude Code in this project and say:
 
-  "finish project setup"
+"finish project setup"
 
 The project-setup skill will:
-  1. Read your codebase silently first
-  2. Ask you plain-language questions about decisions
-     it couldn't infer (one at a time, with examples)
-  3. Show you everything before saving
-  4. Write AGENTS.md + all docs/ai/ files
+
+1. Read your codebase silently first
+2. Ask you plain-language questions about decisions
+   it couldn't infer (one at a time, with examples)
+3. Show you everything before saving
+4. Write AGENTS.md + all docs/ai/ files
 
 This takes about 10-15 minutes.
 
@@ -37,12 +38,12 @@ No API key needed.
 ## Start building
 
 Every new feature starts with:
-  /superpowers:brainstorm
+/using-superpowers
 
 Full workflow:
-  brainstorm → write-plan → execute-plan → code-review → PR
+brainstorm → write-plan → execute-plan → code-review → PR
 
 ## Updating context later
 
 If your project evolves significantly, run:
-  "update project context"
+"update project context"
