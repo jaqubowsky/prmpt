@@ -91,7 +91,7 @@ Lean reference document loaded every session. Contains:
 - Data layer (1 sentence + link to docs/ai/ARCHITECTURE.md)
 - AI Working Rules: ALWAYS / NEVER / WHEN IN DOUBT — **project-specific, concrete rules only**. Not generic truisms. Every rule should be something unique to THIS project. Include rules YOU think are important based on the interview, not just what the user said.
 - ALWAYS include: "Use context7 MCP to check documentation before using any library or tool."
-- For TypeScript projects: add LSP instructions (use `goToDefinition`, `findReferences`, `hover` for navigation; use `findReferences` before renaming; rely on LSP diagnostics after edits; reserve Grep/Glob for non-semantic searches).
+- ALWAYS include LSP instructions: use `goToDefinition`, `findReferences`, `hover` for code navigation; use `findReferences` before renaming or changing signatures; rely on LSP diagnostics after edits; reserve Grep/Glob for non-semantic searches (comments, config values).
 - References section with `@docs/ai/FILE.md` links
 - PR Checklist (or note that PRs aren't used)
 
@@ -130,11 +130,11 @@ Run the project's toolchain to verify: build, lint, test — whatever exists. If
 
 Check which plugins are installed (`claude plugin list`) and recommend project-specific plugins based on the stack discovered during the interview. For example:
 
-- TypeScript project → suggest `typescript-lsp@claude-plugins-official` (code intelligence, diagnostics)
-- Supabase project → suggest `supabase@claude-plugins-official`
-- Playwright tests → suggest `playwright@claude-plugins-official`
-- Frontend with design files → remind about `figma@claude-plugins-official` (already installed)
-- Python project → check if relevant Python tooling plugins exist
+- TypeScript/JavaScript → suggest `typescript-lsp@claude-plugins-official`
+- Supabase → suggest `supabase@claude-plugins-official`
+- Playwright → suggest `playwright@claude-plugins-official`
+
+Check `claude plugin list` for available plugins and recommend anything relevant to the detected stack.
 
 Install recommended plugins with user confirmation. Add them to `.claude/settings.json` plugins list.
 
