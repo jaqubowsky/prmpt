@@ -11,6 +11,16 @@
 
 One command to set up any project for AI-first development with Claude Code.
 
+## Quick start
+
+```bash
+# Clone and run
+git clone https://github.com/jaqubowsky/prmpt.git
+cd your-project
+node /path/to/prmpt/bin/cli.mjs
+```
+
+Or if published to a GitHub org:
 ```bash
 npx github:[org]/prmpt
 ```
