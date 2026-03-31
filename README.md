@@ -15,6 +15,14 @@ One command to set up any project for AI-first development with Claude Code.
 npx github:[org]/prmpt
 ```
 
+<p align="center">
+  <a href="https://asciinema.org/a/TODO">
+    <img src="https://asciinema.org/a/TODO.svg" width="700" />
+  </a>
+  <br/>
+  <sub>30-second demo — scaffold + intelligent interview</sub>
+</p>
+
 ## How it works
 
 ```mermaid
