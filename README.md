@@ -104,11 +104,11 @@ After the interview, a **plugin audit** suggests stack-specific plugins (LSP for
 
 ```mermaid
 graph LR
-    A[/using-superpowers] --> B[brainstorm]
-    B --> C[write-plan]
-    C --> D[execute-plan]
-    D --> E[code-review]
-    E --> F[finish branch]
+    A["using-superpowers"] --> B["brainstorm"]
+    B --> C["write-plan"]
+    C --> D["execute-plan"]
+    D --> E["code-review"]
+    E --> F["finish branch"]
 
     style A fill:#0d9488,color:#fff,stroke:none
     style F fill:#16a34a,color:#fff,stroke:none
