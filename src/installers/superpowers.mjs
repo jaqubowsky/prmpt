@@ -3,11 +3,11 @@ import chalk from 'chalk';
 
 export async function installSuperpowers() {
   try {
-    await execa('claude', ['plugin', 'install', 'superpowers@superpowers-marketplace']);
+    await execa('claude', ['plugin', 'install', 'superpowers@claude-plugins-official']);
     return { success: true };
   } catch (error) {
     console.log(chalk.yellow('⚠ Could not install Superpowers automatically.'));
-    console.log(chalk.yellow('  Run manually: claude plugin install superpowers@superpowers-marketplace'));
+    console.log(chalk.yellow('  Run manually: claude plugin install superpowers@claude-plugins-official'));
     return { success: false };
   }
 }

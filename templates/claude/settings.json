@@ -1,5 +1,5 @@
 {
-  "plugins": ["superpowers@superpowers-marketplace"],
+  "plugins": ["superpowers@claude-plugins-official"],
   "permissions": {
     "allow": [
       "Bash(npm run *)",
