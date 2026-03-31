@@ -47,6 +47,8 @@ Questions to explore (not exhaustive — follow the thread):
 - What's MVP vs later? Why that boundary?
 - What looks simple but is actually complex? (Push here — users underestimate complexity.)
 - What's explicitly out of scope? What will this NEVER do?
+- For each feature: what does "done" look like? What can the user do when it's working? (This becomes acceptance criteria.)
+- How do we know this product is successful? What's the bar? (This becomes success metrics.)
 
 Stay here until you're satisfied. Challenge answers. "You said one user flow, but what about [scenario]?" "You mentioned feature X — does that mean you also need Y?"
 
@@ -102,7 +104,15 @@ Lean reference document loaded every session. Contains:
 
 These files should reflect the FULL depth of the interview — not just what the user said, but edge cases you surfaced, decisions you challenged, and the reasoning behind each choice.
 
-**PRODUCT.md** — What this project does, who uses it, key domain concepts, user flows, what success looks like. Written so any AI reading this understands the product deeply.
+**PRODUCT.md** — The product bible. Any AI reading this should understand what to build and how to verify it's correct. Structure:
+- What it is (2-3 sentences, plain language)
+- The problem it solves and why it matters
+- Who uses it (personas, not abstractions)
+- Core user flows (step-by-step, what the user DOES)
+- Key domain concepts and terminology
+- **User stories with acceptance criteria** — `As a [user], I want [action] so that [benefit]`. Each story gets concrete, testable acceptance criteria. These define "done" for each feature. Cover MVP stories only, not future phases.
+- **Success metrics** — How do we know this works? Concrete, measurable where possible. E.g., "User can create a map and share it in under 30 seconds", "Shared link works without login", "Map loads with 200+ countries in under 2s".
+- Explicit non-goals (what this will NEVER do)
 
 **ROADMAP.md** — Current priorities, what's next, what's deferred, constraints, deadlines.
 
