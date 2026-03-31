@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 const REQUIRED_PLUGINS = [
   'superpowers',
-  'typescript-lsp',
+  'context7',
   'github',
   'commit-commands',
   'figma',

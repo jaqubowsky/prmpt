@@ -1,7 +1,7 @@
 {
   "plugins": [
     "superpowers@claude-plugins-official",
-    "typescript-lsp@claude-plugins-official",
+    "context7@claude-plugins-official",
     "github@claude-plugins-official",
     "commit-commands@claude-plugins-official",
     "figma@claude-plugins-official",
