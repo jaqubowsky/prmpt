@@ -16,11 +16,7 @@ npx github:[org]/prmpt
 ```
 
 <p align="center">
-  <a href="https://asciinema.org/a/vosUOYostdHDUKGA" target="_blank">
-    <img src="https://asciinema.org/a/vosUOYostdHDUKGA.svg" width="700" />
-  </a>
-  <br/>
-  <sub>30-second demo — scaffold + intelligent interview</sub>
+  <img src="assets/demo.gif" alt="prmpt demo" width="700" />
 </p>
 
 ## How it works
