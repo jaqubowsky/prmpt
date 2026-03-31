@@ -1,3 +1,7 @@
 node_modules/
 project-setup-workspace/
 docs/
+AGENTS.md
+CLAUDE.md
+SETUP_WITH_CLAUDE.md
+.claude/
