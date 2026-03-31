@@ -129,6 +129,10 @@ Updates skill and config files. Never overwrites your AGENTS.md or docs/ai/ with
 - Node.js >= 18
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
 
+## License
+
+MIT — do whatever you want with it. See [LICENSE](LICENSE).
+
 ---
 
 <sub>Zero LLM API calls. All intelligence comes from Claude Code + the bundled project-setup skill.</sub>
