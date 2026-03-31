@@ -127,9 +127,13 @@ Ask the user if they want CI and AI PR review. If yes:
 
 Run the project's toolchain to verify: build, lint, test — whatever exists. If something fails, fix it. If no toolchain exists yet, skip and say so.
 
+### Run claude-code-setup audit
+
+This step is NOT optional. Run the `claude-code-setup` plugin to analyze the generated files and get recommendations. This catches issues you might have missed.
+
 ### Plugin audit
 
-Check which plugins are installed (`claude plugin list`) and recommend project-specific plugins based on the stack discovered during the interview. For example:
+Check which plugins are installed (`claude plugin list`) and install project-specific plugins based on the stack discovered during the interview:
 
 **LSP plugin for detected language (install the matching one):**
 - TypeScript/JavaScript → `typescript-lsp@claude-plugins-official`
@@ -154,4 +158,4 @@ Check `claude plugin list` for any other relevant plugins.
 
 Install recommended plugins with user confirmation. Add them to `.claude/settings.json` plugins list.
 
-When done: "Done. Start every new feature with: /superpowers:brainstorm"
+When done: "Done. Project context is configured. Start working with: /using-superpowers"
