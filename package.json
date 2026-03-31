@@ -5,6 +5,11 @@
   "bin": {
     "prmpt": "./bin/cli.mjs"
   },
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ],
   "dependencies": {
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
