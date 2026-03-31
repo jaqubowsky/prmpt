@@ -6,99 +6,112 @@ One command to set up any project for AI-first development with Claude Code.
 npx github:[org]/prmpt
 ```
 
----
+## How it works
 
-## What it does
+```mermaid
+graph LR
+    A[npx prmpt] --> B[Scaffold files]
+    B --> C[Install plugins]
+    C --> D[Launch Claude Code]
+    D --> E[Explore codebase]
+    E --> F[Interview you]
+    F --> G[Write docs]
+    G --> H[Plugin audit]
+    H --> I[Ready to build]
 
-**prmpt** scaffolds project context files and launches Claude Code to finish the setup through an intelligent interview.
-
+    style A fill:#0d9488,color:#fff,stroke:none
+    style D fill:#2563eb,color:#fff,stroke:none
+    style I fill:#16a34a,color:#fff,stroke:none
 ```
-You run prmpt
-    │
-    ├── Copies skeleton files (AGENTS.md, docs/ai/, CLAUDE.md, settings)
-    ├── Installs 6 plugins (superpowers, context7, github, figma, commit-commands, claude-code-setup)
-    └── Launches Claude Code
-            │
-            ├── Reads your codebase silently
-            ├── Interviews you about the product (problem-first, tools-last)
-            ├── Challenges your decisions, predicts edge cases
-            ├── Writes complete project documentation
-            ├── Runs plugin audit for your stack
-            └── Done. Start building with /using-superpowers
+
+## The interview
+
+The `project-setup` skill isn't a survey. It's a collaborative design session:
+
+```mermaid
+graph TD
+    subgraph "Phase A — Product"
+        A1[What does it do?] --> A2[Who uses it?]
+        A2 --> A3[User flows + features]
+        A3 --> A4[User stories + acceptance criteria]
+        A4 --> A5[Success metrics]
+        A5 --> A6[Edge cases + non-goals]
+    end
+
+    subgraph "Phase B — Roadmap"
+        B1[What now?] --> B2[What next?] --> B3[What's deferred?]
+    end
+
+    subgraph "Phase C — Technical"
+        C1[Stack + architecture] --> C2[Data flow]
+        C2 --> C3[Testing strategy]
+        C3 --> C4[Conventions + patterns]
+    end
+
+    subgraph "Phase D — Working rules"
+        D1[Boundaries] --> D2[Workflow + CI]
+    end
+
+    A6 --> B1
+    B3 --> C1
+    C4 --> D1
+    D2 --> E[Generate all docs]
+
+    style A1 fill:#0d9488,color:#fff,stroke:none
+    style E fill:#16a34a,color:#fff,stroke:none
 ```
+
+- **Problem first, tools last** — understands WHAT you're building before asking about HOW
+- **Pushes back** — challenges decisions, predicts edge cases you haven't considered
+- **One question at a time** — concrete options with a recommendation
+- **Never infers preferences** — reads facts from code, asks about every decision
 
 ## What you get
 
 ```
 your-project/
 ├── CLAUDE.md                         → Points Claude to AGENTS.md every session
-├── AGENTS.md                         → Lean reference (~80 lines) loaded every session
+├── AGENTS.md                         → Lean project reference (~80 lines)
 ├── docs/ai/
-│   ├── PRODUCT.md                    → Product context, user stories, acceptance criteria
+│   ├── PRODUCT.md                    → User stories, acceptance criteria, success metrics
 │   ├── ROADMAP.md                    → Priorities, phases, constraints
-│   ├── CONVENTIONS.md                → Naming, imports, code style decisions
-│   ├── PATTERNS.md                   → How to structure components/modules
-│   ├── TESTING.md                    → What to test, how, testing philosophy
-│   └── ARCHITECTURE.md              → Stack, schema, data flow, technical decisions
+│   ├── CONVENTIONS.md                → Naming, imports, code style
+│   ├── PATTERNS.md                   → Component/module structure
+│   ├── TESTING.md                    → What to test, how, philosophy
+│   └── ARCHITECTURE.md              → Stack, schema, data flow, decisions
 ├── .claude/
 │   ├── settings.json                 → Plugin config + permissions
 │   └── skills/project-setup/SKILL.md → The interview skill
-└── .github/                          → CI + AI PR review (generated during interview)
+└── .github/                          → CI + AI PR review (tailored to your stack)
 ```
 
-## The interview
+## Plugins
 
-The `project-setup` skill conducts a thorough interview before writing anything. It's not a survey — it's a collaborative design session where Claude:
+Six plugins installed automatically:
 
-- **Starts with the product** — what you're building, for whom, what problem it solves
-- **Goes deep** — user stories, acceptance criteria, success metrics, edge cases
-- **Pushes back** — challenges bad decisions, predicts problems you haven't thought of
-- **Asks one question at a time** — with concrete options and a recommendation
-- **Never infers preferences** — reads facts from code, asks about every decision
-
-Only after fully understanding the product does it move to technical questions (stack, architecture, conventions, testing).
-
-## Plugins installed
-
-| Plugin | Purpose |
+| Plugin | What it does |
 |---|---|
-| `superpowers` | Full dev workflow: brainstorm → plan → TDD → code review → PR |
-| `context7` | Always-fresh documentation for any library or framework |
-| `github` | Repository management, issues, PRs |
-| `commit-commands` | Git commit/push workflows |
-| `figma` | Design file access |
-| `claude-code-setup` | Codebase analysis and recommendations |
+| **superpowers** | Dev workflow: brainstorm, plan, TDD, code review, PR |
+| **context7** | Fresh docs for any library — even ones you know well |
+| **github** | Repo management, issues, PRs from Claude |
+| **commit-commands** | Git commit/push workflows |
+| **figma** | Access design files directly |
+| **claude-code-setup** | Codebase analysis and recommendations |
 
-The skill also runs a **plugin audit** at the end, suggesting stack-specific plugins:
-
-| Stack | Suggested plugin |
-|---|---|
-| TypeScript/JS | `typescript-lsp` |
-| Python | `pyright-lsp` |
-| Go | `gopls-lsp` |
-| Rust | `rust-analyzer-lsp` |
-| Java | `jdtls-lsp` |
-| C# | `csharp-lsp` |
-| PHP | `php-lsp` |
-| C/C++ | `clangd-lsp` |
-| Swift | `swift-lsp` |
-| Kotlin | `kotlin-lsp` |
-| Ruby | `ruby-lsp` |
-| Elixir | `elixir-ls-lsp` |
-| Lua | `lua-lsp` |
-| Supabase | `supabase` |
-| Playwright | `playwright` |
+After the interview, a **plugin audit** suggests stack-specific plugins (LSP for your language, Supabase, Playwright, etc.) and installs them.
 
 ## After setup
 
-Every new feature follows the Superpowers workflow:
+```mermaid
+graph LR
+    A[/using-superpowers] --> B[brainstorm]
+    B --> C[write-plan]
+    C --> D[execute-plan]
+    D --> E[code-review]
+    E --> F[finish branch]
 
-```
-/using-superpowers              → Entry point
-  └── /superpowers:brainstorm   → Clarify what you're building
-  └── /superpowers:write-plan   → Break it into tasks
-  └── /superpowers:execute-plan → TDD implementation
-  └── /code-review              → Review before merging
+    style A fill:#0d9488,color:#fff,stroke:none
+    style F fill:#16a34a,color:#fff,stroke:none
 ```
 
 ## Updating
@@ -112,22 +125,8 @@ Updates skill and config files. Never overwrites your AGENTS.md or docs/ai/ with
 ## Requirements
 
 - Node.js >= 18
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed
-
-## How it works (technical)
-
-prmpt is a Node.js CLI with zero LLM API calls. It copies static templates, installs plugins via `claude plugin install`, and launches `claude "finish project setup"`. All intelligence comes from Claude Code + the bundled `project-setup` skill.
-
-```
-bin/cli.mjs          → Entry point (commander)
-src/commands/init.mjs → Copy templates + install plugins + launch Claude
-src/commands/update.mjs → Selective template updates
-src/installers/superpowers.mjs → Plugin installation
-src/utils/detect.mjs → Project state detection
-src/utils/copy-templates.mjs → Template copy with path mapping
-src/utils/banner.mjs → ASCII banner
-```
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
 
 ---
 
-Built for developers who want to start building with AI, not configuring it.
+<sub>Zero LLM API calls. All intelligence comes from Claude Code + the bundled project-setup skill.</sub>
