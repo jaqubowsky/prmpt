@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "configuration": "with_skill",
+  "expectations": [
+    {"text": "Claude reads pyproject.toml and source files before asking any question", "passed": true, "evidence": "Lists specific details from pyproject.toml (ruff config, line length) and source files (Invoice model fields, routes)"},
+    {"text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase", "passed": true, "evidence": "7 bullet points covering stack, name, architecture, data model, testing, code style, AGENTS.md status"},
+    {"text": "Claude correctly identifies FastAPI, SQLAlchemy, PostgreSQL, pytest, and ruff", "passed": true, "evidence": "First bullet: 'Python 3.11+, FastAPI, SQLAlchemy 2.0, Pydantic v2, Alembic, PostgreSQL'"},
+    {"text": "First question is about the product/what the project does", "passed": true, "evidence": "First question: 'What does this API do, and who uses it?'"},
+    {"text": "Questions include concrete options and a recommendation", "passed": true, "evidence": "3 options (A: Internal tool, B: Client-facing, C: Part of larger system) with recommendation for A"},
+    {"text": "Claude asks exactly one question per message, not multiple", "passed": true, "evidence": "Single question with options, no follow-ups packed in"}
+  ]
+}

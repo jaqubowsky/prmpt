@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "configuration": "with_skill",
+  "expectations": [
+    {"text": "Claude doesn't crash or give up on a nearly empty project — still proceeds with interview", "passed": true, "evidence": "Proceeds normally, presents KNOWN list and asks first question"},
+    {"text": "KNOWN list is appropriately short (1-2 items), reflecting the sparse codebase", "passed": false, "evidence": "Lists 5 bullet points - while accurate, 'no dependencies', 'no source code', 'no tooling' are absence-of-things rather than known facts. Could be more concise."},
+    {"text": "Claude does not assume a framework, test runner, or architecture that isn't present", "passed": true, "evidence": "Correctly states no tooling, no deps, no source. Offers options without assuming."},
+    {"text": "First question is about what the user is building", "passed": true, "evidence": "First question: 'What does this project do, and who is it for?'"},
+    {"text": "Questions include concrete options and a recommendation", "passed": true, "evidence": "5 options (A-E: web app, API, CLI, library, other) with conditional recommendation"}
+  ]
+}

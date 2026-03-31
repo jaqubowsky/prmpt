@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "python-fastapi-invoices",
+  "prompt": "finish project setup",
+  "assertions": [
+    {"name": "explores_before_asking", "text": "Claude reads pyproject.toml and source files before asking any question"},
+    {"name": "presents_known_list", "text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase"},
+    {"name": "identifies_stack_correctly", "text": "Claude correctly identifies FastAPI, SQLAlchemy, PostgreSQL, pytest, and ruff"},
+    {"name": "starts_with_product", "text": "First question is about the product/what the project does"},
+    {"name": "question_has_options", "text": "Questions include concrete options and a recommendation"},
+    {"name": "one_question_at_a_time", "text": "Claude asks exactly one question per message, not multiple"}
+  ]
+}

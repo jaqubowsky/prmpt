@@ -1,0 +1,15 @@
+{
+  "eval_id": 0,
+  "eval_name": "nextjs-task-manager",
+  "prompt": "finish project setup",
+  "assertions": [
+    {"name": "explores_before_asking", "text": "Claude reads package.json and source files before asking any question"},
+    {"name": "presents_known_list", "text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase"},
+    {"name": "identifies_stack_correctly", "text": "Claude correctly identifies Next.js, Supabase, TypeScript, and Vitest"},
+    {"name": "starts_with_product", "text": "First question is about the product/what the project does, not about technical setup"},
+    {"name": "question_has_options", "text": "Questions include concrete options (not open-ended) and a recommendation"},
+    {"name": "one_question_at_a_time", "text": "Claude asks exactly one question per message, not multiple"},
+    {"name": "does_not_infer_conventions", "text": "Claude does NOT decide naming conventions, import ordering, or code style on its own — signals it will ask about preferences"},
+    {"name": "asks_deep_questions", "text": "Questions go beyond surface level — asks about edge cases or specific patterns, not just 'which framework'"}
+  ]
+}

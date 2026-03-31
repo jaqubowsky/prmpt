@@ -1,0 +1,12 @@
+{
+  "eval_id": 0,
+  "configuration": "with_skill",
+  "expectations": [
+    {"text": "Claude reads package.json and source files before asking any question", "passed": true, "evidence": "Response starts with 'I've looked through the project' and lists stack, architecture, data model details that could only come from reading source files"},
+    {"text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase", "passed": true, "evidence": "6 bullet points: Stack, Project name, Architecture, Data model, AGENTS.md status, Tests"},
+    {"text": "Claude correctly identifies Next.js, Supabase, TypeScript, and Vitest", "passed": true, "evidence": "First bullet: 'Next.js 14 (App Router) + TypeScript + Supabase + Zod, with Vitest for testing'"},
+    {"text": "First question is about the product/what the project does, not about technical setup", "passed": true, "evidence": "First question: 'What problem does this app solve, and who are its users?'"},
+    {"text": "Questions include concrete options (not open-ended) and a recommendation", "passed": true, "evidence": "3 options (A: Personal, B: Multi-user SaaS, C: Team) with recommendation for B based on user_id field"},
+    {"text": "Claude asks exactly one question per message, not multiple", "passed": true, "evidence": "Only one question asked, with three options"}
+  ]
+}

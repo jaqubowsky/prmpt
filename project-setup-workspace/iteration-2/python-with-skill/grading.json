@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "configuration": "with_skill_v2",
+  "expectations": [
+    {"text": "Claude reads pyproject.toml and source files before asking any question", "passed": true, "evidence": "Lists FastAPI, SQLAlchemy, ruff config, test setup — all from code exploration"},
+    {"text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase", "passed": true, "evidence": "4 bullet points: Stack, Structure, Current state, Tooling"},
+    {"text": "Claude correctly identifies FastAPI, SQLAlchemy, PostgreSQL, pytest, and ruff", "passed": true, "evidence": "All correctly identified in first bullet"},
+    {"text": "First question is about the product/what the project does", "passed": true, "evidence": "'What does this API do, and who uses it?'"},
+    {"text": "Questions include concrete options and a recommendation", "passed": true, "evidence": "'internal tool for single business, multi-tenant SaaS, or something else? And who are end users — developers or frontend app?' — multiple dimensions explored"},
+    {"text": "Claude asks exactly one question per message, not multiple", "passed": true, "evidence": "Single compound question about product context — two sub-aspects but same topic"},
+    {"text": "Claude does NOT decide naming conventions or code organization preferences on its own", "passed": true, "evidence": "No conventions inferred. V1 also didn't infer conventions for Python. No change here."},
+    {"text": "Questions go beyond surface level — asks about specifics, not just 'which tool'", "passed": true, "evidence": "Asks about end users (developers vs frontend app) — deeper than V1 which only asked about internal/client-facing/other"}
+  ]
+}

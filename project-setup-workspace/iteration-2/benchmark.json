@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "skill_name": "project-setup",
+    "timestamp": "2026-03-31T21:50:00Z",
+    "comparison": "iteration-2 (new grill-me style) vs iteration-1 (old procedural style)",
+    "evals_run": ["nextjs-task-manager", "python-fastapi-invoices", "empty-greenfield-project"]
+  },
+  "configurations": [
+    {
+      "name": "with_skill_v2 (new)",
+      "pass_rate": 0.88,
+      "mean_time_seconds": 41.3,
+      "mean_tokens": 15164,
+      "evals": [
+        {"name": "nextjs-task-manager", "passed": 8, "total": 8, "pass_rate": 1.0, "time_seconds": 47.5, "tokens": 16347},
+        {"name": "python-fastapi-invoices", "passed": 8, "total": 8, "pass_rate": 1.0, "time_seconds": 39.5, "tokens": 15168},
+        {"name": "empty-greenfield-project", "passed": 4, "total": 6, "pass_rate": 0.67, "time_seconds": 36.8, "tokens": 13977}
+      ]
+    },
+    {
+      "name": "with_skill_v1 (old)",
+      "pass_rate": 0.76,
+      "mean_time_seconds": 58.1,
+      "mean_tokens": 16275,
+      "evals": [
+        {"name": "nextjs-task-manager", "passed": 6, "total": 8, "pass_rate": 0.75, "time_seconds": 58.5, "tokens": 17045, "notes": "inferred conventions without asking, questions not deep enough"},
+        {"name": "python-fastapi-invoices", "passed": 6, "total": 8, "pass_rate": 0.75, "time_seconds": 52.6, "tokens": 16500, "notes": "inferred conventions without asking"},
+        {"name": "empty-greenfield-project", "passed": 4, "total": 6, "pass_rate": 0.67, "time_seconds": 63.3, "tokens": 15280, "notes": "too many KNOWN items for empty project"}
+      ]
+    }
+  ],
+  "run_summary": {
+    "delta": {
+      "pass_rate": "+0.12 (v2 vs v1)",
+      "time_seconds": "-16.8 (v2 is faster)",
+      "tokens": "-1111 (v2 uses fewer tokens)"
+    }
+  },
+  "analysis": {
+    "improvements_v2": [
+      "does_not_infer_conventions: V2 passes on Next.js (V1 failed — inferred PascalCase, import ordering without asking)",
+      "asks_deep_questions: V2 marginally better on Next.js, clearly better on Python (asks about end users: devs vs frontend)",
+      "Speed: V2 is 17 seconds faster on average (41s vs 58s)",
+      "Tokens: V2 uses 1100 fewer tokens (leaner skill = less preamble)"
+    ],
+    "regressions_v2": [
+      "empty project question_has_options: V1 had 5 structured options (A-E), V2 asked open-ended 'What does this app do?' with no options. The grill-me style instruction 'provide your recommended answer' was not followed for empty projects.",
+      "empty project short_known_list: Still 5 bullets (same as V1), listing absences as findings"
+    ],
+    "unchanged": [
+      "Both versions explore codebase first, identify stack correctly, start with product question",
+      "Both use one question at a time",
+      "Python conventions: both passed (no conventions inferred for Python projects in either version)"
+    ],
+    "recommendation": "V2 is better overall (+12% pass rate, faster, cheaper). The empty project regression on options is fixable — add a note in the skill that for empty/greenfield projects, options are especially important since there's no code to anchor the conversation."
+  }
+}

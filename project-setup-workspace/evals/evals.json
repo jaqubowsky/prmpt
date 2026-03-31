@@ -1,0 +1,117 @@
+{
+  "skill_name": "project-setup",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "finish project setup",
+      "expected_output": "Should explore the Next.js + Supabase + TypeScript codebase, identify stack/patterns, present KNOWN list, then ask first question about PRODUCT (what the app does). Questions should be plain language with concrete options and a recommendation.",
+      "files": [],
+      "project_dir": "/tmp/eval-projects/nextjs-app",
+      "assertions": [
+        {
+          "name": "explores_before_asking",
+          "text": "Claude reads package.json and source files before asking any question",
+          "type": "behavioral"
+        },
+        {
+          "name": "presents_known_list",
+          "text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase",
+          "type": "behavioral"
+        },
+        {
+          "name": "identifies_stack_correctly",
+          "text": "Claude correctly identifies Next.js, Supabase, TypeScript, and Vitest",
+          "type": "factual"
+        },
+        {
+          "name": "starts_with_product",
+          "text": "First question is about the product/what the project does, not about technical setup",
+          "type": "behavioral"
+        },
+        {
+          "name": "question_has_options",
+          "text": "Questions include concrete options (not open-ended) and a recommendation",
+          "type": "format"
+        },
+        {
+          "name": "one_question_at_a_time",
+          "text": "Claude asks exactly one question per message, not multiple",
+          "type": "format"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "finish project setup",
+      "expected_output": "Should explore the Python FastAPI + SQLAlchemy codebase, identify stack/patterns, present KNOWN list. Should detect this is a REST API with PostgreSQL, pytest, and ruff. First question about PRODUCT.",
+      "files": [],
+      "project_dir": "/tmp/eval-projects/python-api",
+      "assertions": [
+        {
+          "name": "explores_before_asking",
+          "text": "Claude reads pyproject.toml and source files before asking any question",
+          "type": "behavioral"
+        },
+        {
+          "name": "presents_known_list",
+          "text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase",
+          "type": "behavioral"
+        },
+        {
+          "name": "identifies_stack_correctly",
+          "text": "Claude correctly identifies FastAPI, SQLAlchemy, PostgreSQL, pytest, and ruff",
+          "type": "factual"
+        },
+        {
+          "name": "starts_with_product",
+          "text": "First question is about the product/what the project does",
+          "type": "behavioral"
+        },
+        {
+          "name": "question_has_options",
+          "text": "Questions include concrete options and a recommendation",
+          "type": "format"
+        },
+        {
+          "name": "one_question_at_a_time",
+          "text": "Claude asks exactly one question per message, not multiple",
+          "type": "format"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "finish project setup",
+      "expected_output": "Should detect nearly empty project (just package.json with name). KNOWN list should be very short. Should still start with PRODUCT question but acknowledge there's very little to infer. Should NOT assume any framework or testing setup.",
+      "files": [],
+      "project_dir": "/tmp/eval-projects/empty-project",
+      "assertions": [
+        {
+          "name": "handles_empty_gracefully",
+          "text": "Claude doesn't crash or give up on a nearly empty project — still proceeds with interview",
+          "type": "behavioral"
+        },
+        {
+          "name": "short_known_list",
+          "text": "KNOWN list is appropriately short (1-2 items), reflecting the sparse codebase",
+          "type": "behavioral"
+        },
+        {
+          "name": "no_false_assumptions",
+          "text": "Claude does not assume a framework, test runner, or architecture that isn't present",
+          "type": "factual"
+        },
+        {
+          "name": "starts_with_product",
+          "text": "First question is about what the user is building",
+          "type": "behavioral"
+        },
+        {
+          "name": "question_has_options",
+          "text": "Questions include concrete options and a recommendation",
+          "type": "format"
+        }
+      ]
+    }
+  ]
+}

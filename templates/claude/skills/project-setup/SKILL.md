@@ -1,193 +1,86 @@
 ---
 name: project-setup
-description: Initialize or update AGENTS.md and docs/ai/ by first exploring the codebase, then interviewing the user about decisions that cannot be inferred. Use when the user says "finish setup", "finish project setup", "set up project context", "update AGENTS.md", or when docs/ai/ contains placeholder comments.
+description: Initialize or update AGENTS.md and docs/ai/ for a project. First explores the codebase silently, then interviews the user relentlessly about every decision — conventions, naming, patterns, testing, architecture, product context, roadmap. Use when user says "finish setup", "finish project setup", "set up project context", "update AGENTS.md", "update project context", or when docs/ai/ files contain placeholder TODO comments.
 ---
 
-## Czym jest ten skill
+Interview me relentlessly about every aspect of this project until we have enough context to write complete, project-specific documentation. Walk down each branch of the decision tree, resolving dependencies one-by-one.
 
-Laczy dwa podejscia:
-1. Explore-first: czyta kodebase zanim zada jakiekolwiek pytanie
-2. Grill-me style: relentless interview - nie konczy dopoki kazda
-   galaz drzewa decyzyjnego nie jest w pelni rozwiazana
+## Before asking anything
 
-Wynik: kompletne AGENTS.md i docs/ai/ ktore Claude Code moze
-uzywac jako source of truth przy kazdej sesji.
+Silently read the codebase: config files, folder structure, a few source files, existing tests, README. Build a mental model of what's there.
 
-## PHASE 1: EXPLORE (cicho, nie narrate)
+Then present what you found (3-5 bullets) and say you'll ask questions one at a time.
 
-Przed zadaniem jakiegokolwiek pytania, przeczytaj:
-- package.json -> stack, wersje, scripts, dependencies
-- Strukture folderow -> jaki wzorzec architektury jest uzywany
-- 2-3 istniejace komponenty jesli istnieja -> naming, patterns
-- tsconfig.json -> strictness, path aliases
-- eslint / biome config -> obowiazujace reguly
-- Istniejace testy jesli sa -> jak sa pisane, co testuja
-- Obecny AGENTS.md -> co jest placeholder vs co jest wypelnione
+## The interview
 
-Zbuduj dwie listy wewnetrznie:
-  KNOWN   = rzeczy ktore mozesz wywnioskowac z confidence
-  UNKNOWN = rzeczy ktorych nie mozesz ustalic bez pytania
+Ask questions one at a time. For each question, provide concrete options and your recommended answer based on what you saw in the code.
 
-Nastepnie powiedz:
-"Przejrzalem projekt. Oto co juz wiem:
-  - [lista KNOWN - 3-5 punktow]
+If a question can be answered by exploring the codebase, explore the codebase instead of asking.
 
-Mam kilka pytan zeby wypelnic reszte.
-Bede pytal po jednym na raz - mozesz wybrac opcje
-lub powiedziec 'tak' do mojej propozycji."
+**Do not infer decisions the user should make.** You can infer facts (what stack is used, what files exist). You cannot infer preferences (how to name files, what conventions to follow, what to test, how to structure components). When in doubt, ask.
 
-## PHASE 2: RELENTLESS INTERVIEW
+### What to ask about (not a fixed list — follow the conversation)
 
-To jest grill-me zastosowany do project setup.
+Start with the product — without understanding WHAT we're building, questions about HOW don't make sense.
 
-Zasada nadrzedna: kazda odpowiedz albo rozwiazuje
-galaz albo otwiera nowe pytania. Nie koncz Phase 2
-dopoki WSZYSTKIE galezie nie sa w pelni rozwiazane.
+- **Product**: What this does, who it's for, what problem it solves
+- **Roadmap**: What's the priority now, what's next, what can wait
+- **Conventions**: File naming, variable naming, import ordering, code style preferences beyond the linter
+- **Patterns**: How a typical component/module/handler should be structured, what reusable patterns to follow
+- **Testing**: What to test, what not to test, how tests should be written, naming conventions for tests
+- **Architecture**: Why this stack, why this structure, key technical decisions
+- **Data flow**: How data gets to components, what happens on errors, loading/empty states
+- **Boundaries**: What Claude must not touch without asking
+- **Workflow**: PR size, branching, CI, review expectations
 
-NIE uzywaj stalej listy pytan.
-Pytania wynikaja dynamicznie z odpowiedzi.
+Each answer either resolves a branch or opens new questions. Don't move on until a branch is fully resolved — meaning you could write it down unambiguously.
 
-FORMAT KAZDEGO PYTANIA (bez wyjatkow):
+Go deep. "React + Vite + TypeScript" is not enough. Ask about: Do you want barrel exports or direct imports? Named exports or default? Where do types live — colocated or in a types folder? How do you name test files — `.test.ts` next to the file or in `__tests__/`? These details matter for every future Claude session.
 
-  [Pytanie prostym jezykiem - zero zargonu]
+For greenfield/empty projects with no code yet, options are especially important — there's nothing in the codebase to anchor the conversation. Always provide concrete options (e.g., "web app, API, CLI, library") with a recommendation when the project is blank.
 
-  Na przyklad:
-  - Opcja A: [konkretny opis jak to wyglada w praktyce]
-  - Opcja B: [konkretny opis]
-  - Opcja C: [jesli potrzeba]
+## When all branches are resolved
 
-  Proponuje: [twoja rekomendacja] bo [jedno zdanie powodu].
+Say: "I have everything. Here's what I'll write — tell me if anything looks wrong:"
 
-ZASADY FOLLOW-UP:
-- User mowi "opcja A" -> zapytaj o edge cases tej opcji
-- User mowi "zalezy" -> zapytaj od czego, potem kazdy przypadek
-- User mowi "nie wiem" -> daj rekomendacje, zapytaj czy pasuje
-- User mowi "tak" lub "ok" -> rozwiazane, przejdz dalej
-- Nigdy nie porzucaj watku - jesli cos niejasne, idz glebiej
+Show every file in full. Wait for confirmation. Then write:
 
-PRZYKLADY JAK PYTANIA MUSZA WYGLADAC:
+### AGENTS.md (~80 lines max)
 
-  ZLE:  "What's your component architecture strategy?"
-  DOBRZE: "Kiedy tworzysz nowy feature, gdzie laduja pliki?
+Lean reference document loaded every session. Contains:
+- Project overview (2-3 sentences)
+- Architecture pattern (1 sentence + link to docs/ai/ARCHITECTURE.md)
+- Project structure (folder tree, no descriptions — those are in ARCHITECTURE.md)
+- Data layer (1 sentence + link to docs/ai/ARCHITECTURE.md)
+- AI Working Rules: ALWAYS / NEVER / WHEN IN DOUBT — **project-specific, concrete rules only**. Not generic truisms. Every rule should be something that's unique to THIS project.
+- References section with `@docs/ai/FILE.md` links
+- PR Checklist (or note that PRs aren't used)
 
-    Na przyklad:
-    - Wszystko razem: src/features/produkty/ z komponentami,
-      logika i testami w jednym miejscu
-    - Rozdzielone: duze reuzywalne rzeczy w src/components/,
-      rzeczy specyficzne dla feature przy stronie
-    - Flat: wszystko w src/components/, bez podfolderow
+**AGENTS.md must not duplicate content from docs/ai/ files.** It references them. Details live there.
 
-    Proponuje: wszystko razem w jednym folderze per feature,
-    bo widze ze masz kilka oddzielnych sekcji aplikacji."
+### docs/ai/ files
 
-  ZLE:  "What's your error handling philosophy?"
-  DOBRZE: "Co powinno sie pokazac gdy dane sie nie zaladuja?
+**PRODUCT.md** — What this project does, who uses it, key domain concepts, what success looks like.
 
-    Na przyklad:
-    - Spinner podczas ladowania, czerwony komunikat przy bledzie
-    - Szare placeholder bloki (skeleton) podczas ladowania,
-      przycisk 'sprobuj ponownie' przy bledzie
-    - Na razie nic specjalnego, tylko dane
+**ROADMAP.md** — Current priorities, what's next, what's deferred, known constraints.
 
-    Proponuje: spinner + komunikat bledu, bo to najprostsze
-    i nie widze jeszcze skeleton komponentu w projekcie."
+**CONVENTIONS.md** — All the naming/style/organization decisions from the interview. This is the file Claude reads to know how to write code in this project.
 
-  ZLE:  "What's off-limits for Claude?"
-  DOBRZE: "Czy sa foldery ktorych Claude absolutnie nie powinien
-    zmieniac bez pytania cie najpierw?
+**PATTERNS.md** — How to structure a typical unit of work (component, endpoint, module). Include a concrete example from the codebase if one exists.
 
-    Na przyklad:
-    - Folder z logowaniem/auth (latwo cos zepsuc)
-    - Pliki konfiguracji bazy danych
-    - Wszystko jest ok, bez ograniczen
+**TESTING.md** — What gets tested, what doesn't, how to write a test here, test naming, mocking strategy.
 
-    Proponuje: zablokuj folder auth jesli masz, bo bledy
-    w auth sa najtrudniejsze do debugowania."
+**ARCHITECTURE.md** — High-level architecture, folder mapping, key technical decisions and WHY they were made, integration points.
 
-GALEZIE KTORE MUSZA BYC ROZWIAZANE
-(liczba pytan w kazdej galezi = dynamiczna):
+### GitHub files (only if .git/ exists and user wants them)
 
-  [PRODUCT] Co ten projekt robi, dla kogo, jaki problem rozwiazuje
-  [ROADMAP] Co jest teraz priorytetem, co jest nastepne, co moze poczekac
-  [STRUCTURE] Gdzie kod mieszka i dlaczego
-  [DATA] Jak dane trafiaja do komponentow i co gdy cos failuje
-  [COMPONENTS] Co Claude ma i nie ma generowac
-  [TESTS] Co jest testowane, co nie jest i dlaczego
-  [BOUNDARIES] Czego Claude nie moze ruszac bez pytania
-  [WORKFLOW] Rozmiar PR, oczekiwania przy review
+Ask the user if they want CI and AI PR review. If yes:
+- `.github/workflows/ci.yml` — tailored to actual stack
+- `.github/workflows/ai-pr-review.yml` — using anthropics/claude-code-action@main, with a direct_prompt that reads AGENTS.md + docs/ai/ as source of truth and explicitly says "Do NOT invent rules not in those files"
+- `.github/PULL_REQUEST_TEMPLATE.md` — tailored to stack
 
-WAZNE: Zacznij od [PRODUCT] i [ROADMAP] - bez zrozumienia
-CO budujemy, pytania o JAK nie maja sensu.
+## After writing
 
-PRZYKLADY PYTAN DLA NOWYCH GALEZI:
+Run the project's toolchain to verify: build, lint, test — whatever exists. If something fails, fix it. If no toolchain exists yet, skip and say so.
 
-  DOBRZE: "Opowiedz mi w 2-3 zdaniach co ten projekt robi
-    i kto z niego korzysta.
-
-    Na przyklad:
-    - Aplikacja do zarzadzania zadaniami dla malych zespolow
-    - API do przetwarzania platnosci dla e-commerce
-    - Dashboard analityczny dla zespolu marketingu
-
-    Nie potrzebuje formalnego opisu - wystarczy
-    wytlumaczenie jak koledzance."
-
-  DOBRZE: "Nad czym teraz pracujesz i co jest nastepne?
-
-    Na przyklad:
-    - Teraz: logowanie uzytkownikow, nastepne: dashboard
-    - Teraz: MVP - podstawowe CRUD, pozniej: integracje
-    - Nie mam jeszcze planu, zaczynam od zera
-
-    Proponuje: zapisac to co masz w glowie nawet
-    jesli to luźne - lepsze to niz nic."
-
-Galaz jest rozwiazana tylko gdy mozesz ja zapisac
-jednoznacznie w docs/ai/ bez zadnych domyslow.
-
-## PHASE 3: GENERATE
-
-Wejdz w te faze TYLKO gdy wszystkie galezie sa rozwiazane.
-
-Powiedz:
-"Mam wszystko co potrzebuje. Oto co zaraz zapiszę -
-powiedz jesli cokolwiek wyglada nie tak zanim to zrobie:"
-
-Pokaz kazdy plik w calosci.
-Poczekaj na wyrazne potwierdzenie.
-Dopiero wtedy zapisz:
-  - AGENTS.md (wszystkie placeholdery wypelnione)
-  - docs/ai/PRODUCT.md
-  - docs/ai/ROADMAP.md
-  - docs/ai/CONVENTIONS.md
-  - docs/ai/PATTERNS.md
-  - docs/ai/TESTING.md
-  - docs/ai/ARCHITECTURE.md
-  - .github/workflows/ci.yml (dopasowany do stacku)
-  - .github/workflows/ai-pr-review.yml (jesli user chce)
-  - .github/PULL_REQUEST_TEMPLATE.md (dopasowany do stacku)
-
-Zasady dla ai-pr-review.yml:
-Uzyj anthropics/claude-code-action@main.
-direct_prompt MUSI:
-  - Kazac Claude przeczytac AGENTS.md + docs/ai/ NAJPIERW jako source of truth
-  - Wylistowac konkretne rzeczy do sprawdzenia, wynikajace z faktycznego stacku
-  - Powiedziec wprost: "Do NOT invent rules not written in those files"
-  - Powiedziec wprost: "If no rule covers something, skip it"
-  - Ograniczyc review do zmian w PR, nie pre-existing code
-
-## PHASE 4: VERIFY
-
-Po zapisaniu wszystkich plikow, uruchom weryfikacje:
-- `npm run build` lub `npx tsc --noEmit` (jesli TS project)
-- `npm run lint` lub wykryty linter
-- `npm test` lub wykryty test runner
-
-Raportuj wyniki uzytkownikowi.
-Jesli cos failuje, napraw zanim oglosisz setup jako ukonczony.
-
-Po ukonczeniu:
-"Gotowe. Kontekst projektu jest skonfigurowany.
-
-Kazdy nowy feature zaczynaj od:
-  /superpowers:brainstorm"
+When done: "Done. Start every new feature with: /superpowers:brainstorm"

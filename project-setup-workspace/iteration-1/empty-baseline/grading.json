@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "configuration": "without_skill",
+  "expectations": [
+    {"text": "Claude doesn't crash or give up on a nearly empty project — still proceeds with interview", "passed": true, "evidence": "Proceeds and asks a question"},
+    {"text": "KNOWN list is appropriately short (1-2 items), reflecting the sparse codebase", "passed": true, "evidence": "Two brief sections: files present, what's missing. Appropriately terse."},
+    {"text": "Claude does not assume a framework, test runner, or architecture that isn't present", "passed": true, "evidence": "Correctly identifies nothing beyond package.json and AGENTS.md"},
+    {"text": "First question is about what the user is building", "passed": true, "evidence": "Asks 'What is this project? Tell me what you're building'"},
+    {"text": "Questions include concrete options and a recommendation", "passed": false, "evidence": "Completely open-ended: 'Tell me what you're building — the problem it solves, who uses it, and the tech stack'. No options, no recommendation."}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "eval_id": 0,
+  "configuration": "without_skill",
+  "expectations": [
+    {"text": "Claude reads package.json and source files before asking any question", "passed": true, "evidence": "Response lists stack details, architecture, files found - clearly read the codebase"},
+    {"text": "Claude presents a KNOWN list of 3-5 things it inferred from the codebase", "passed": false, "evidence": "Uses headers/table format instead of a concise KNOWN list - information is there but scattered across sections"},
+    {"text": "Claude correctly identifies Next.js, Supabase, TypeScript, and Vitest", "passed": true, "evidence": "Stack section lists 'Next.js 14.2, React 18, Supabase, TypeScript, Zod, Vitest, ESLint'"},
+    {"text": "First question is about the product/what the project does, not about technical setup", "passed": true, "evidence": "First question: 'What is this task manager for? Who uses it?'"},
+    {"text": "Questions include concrete options (not open-ended) and a recommendation", "passed": false, "evidence": "Question is open-ended: 'Is this a personal productivity tool or a team product?' - no structured options A/B/C, no clear recommendation"},
+    {"text": "Claude asks exactly one question per message, not multiple", "passed": false, "evidence": "Asks 3 questions in one message: what is it for, are there plans for features, is auth handled"}
+  ]
+}
