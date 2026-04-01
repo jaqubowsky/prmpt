@@ -17,70 +17,40 @@ One command to set up any project for AI-first development with Claude Code.
 npx prmpt
 ```
 
-Or clone and run locally:
-```bash
-git clone https://github.com/jaqubowsky/prmpt.git
-cd your-project
-node /path/to/prmpt/bin/cli.mjs
-```
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/jaqubowsky/prmpt/main/assets/demo.gif" alt="prmpt demo" width="700" />
 </p>
 
 ## How it works
 
-```mermaid
-graph LR
-    A[npx prmpt] --> B[Scaffold files]
-    B --> C[Install plugins]
-    C --> D[Launch Claude Code]
-    D --> E[Explore codebase]
-    E --> F[Interview you]
-    F --> G[Write docs]
-    G --> H[Plugin audit]
-    H --> I[Ready to build]
-
-    style A fill:#0d9488,color:#fff,stroke:none
-    style D fill:#2563eb,color:#fff,stroke:none
-    style I fill:#16a34a,color:#fff,stroke:none
+```
+npx prmpt
+ │
+ ├─ Scaffold files (AGENTS.md, docs/ai/, CLAUDE.md, settings)
+ ├─ Install plugins (superpowers, context7, github, commit-commands, claude-code-setup)
+ └─ Launch Claude Code
+     │
+     ├─ Explore codebase silently
+     ├─ Interview you (problem-first, one question at a time)
+     ├─ Write complete project documentation
+     ├─ Run plugin audit for your stack
+     └─ Done → start building with /using-superpowers
 ```
 
 ## The interview
 
 The `project-setup` skill isn't a survey. It's a collaborative design session:
 
-```mermaid
-graph TD
-    subgraph "Phase A — Product"
-        A1[What does it do?] --> A2[Who uses it?]
-        A2 --> A3[User flows + features]
-        A3 --> A4[User stories + acceptance criteria]
-        A4 --> A5[Success metrics]
-        A5 --> A6[Edge cases + non-goals]
-    end
+```
+Phase A — Product        What does it do? Who uses it? User stories,
+                         acceptance criteria, success metrics, edge cases
 
-    subgraph "Phase B — Roadmap"
-        B1[What now?] --> B2[What next?] --> B3[What's deferred?]
-    end
+Phase B — Roadmap        What now? What next? What's deferred?
 
-    subgraph "Phase C — Technical"
-        C1[Stack + architecture] --> C2[Data flow]
-        C2 --> C3[Testing strategy]
-        C3 --> C4[Conventions + patterns]
-    end
+Phase C — Technical      Stack, architecture, data flow, testing,
+                         conventions, patterns (only after A+B)
 
-    subgraph "Phase D — Working rules"
-        D1[Boundaries] --> D2[Workflow + CI]
-    end
-
-    A6 --> B1
-    B3 --> C1
-    C4 --> D1
-    D2 --> E[Generate all docs]
-
-    style A1 fill:#0d9488,color:#fff,stroke:none
-    style E fill:#16a34a,color:#fff,stroke:none
+Phase D — Working rules  Boundaries, workflow, CI
 ```
 
 - **Problem first, tools last** — understands WHAT you're building before asking about HOW
@@ -123,16 +93,8 @@ After the interview, a **plugin audit** suggests stack-specific plugins (LSP for
 
 ## After setup
 
-```mermaid
-graph LR
-    A["using-superpowers"] --> B["brainstorm"]
-    B --> C["write-plan"]
-    C --> D["execute-plan"]
-    D --> E["code-review"]
-    E --> F["finish branch"]
-
-    style A fill:#0d9488,color:#fff,stroke:none
-    style F fill:#16a34a,color:#fff,stroke:none
+```
+/using-superpowers → brainstorm → write-plan → execute-plan → code-review → finish
 ```
 
 ## Updating
